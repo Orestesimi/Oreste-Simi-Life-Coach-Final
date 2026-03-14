@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Coaching by Oreste Simi | 90-Day Financial Freedom Blueprint</title>
-    <meta name="description" content="Transform your financial life in 90 days. Professional financial coaching with guaranteed results.">
+    <title>Financial Coaching by Oreste Simi | Build Your Wealth Roadmap</title>
+    <meta name="description" content="I reverse engineer your goals into a personalized wealth roadmap and set up financial automation so your money works for you.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -101,7 +101,7 @@
             padding: 5px 10px;
         }
         
-        /* Hero Section - More Visual */
+        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #1e3a5f 0%, #2F5496 50%, #1e3a5f 100%);
             min-height: 85vh;
@@ -149,54 +149,94 @@
             z-index: 2;
         }
         
-        .hero-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #ffffff;
-            padding: 7px 20px;
-            border-radius: 50px;
+        .roadmap-visual {
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .roadmap-stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .roadmap-icon {
+            font-size: 36px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+        
+        .roadmap-label {
             font-size: 13px;
             font-weight: 700;
-            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.85);
             text-transform: uppercase;
-            margin-bottom: 25px;
-            backdrop-filter: blur(10px);
+            letter-spacing: 0.5px;
+        }
+        
+        .roadmap-arrow {
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.7);
+            animation: bounce 2s ease-in-out infinite;
+            margin: 0 5px;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(0); opacity: 0.7; }
+            50% { transform: translateX(8px); opacity: 1; }
         }
         
         .hero h1 {
-            font-size: 68px;
+            font-size: 72px;
             font-weight: 900;
             color: #ffffff;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             line-height: 1.1;
             letter-spacing: -2px;
+            position: relative;
+            padding-bottom: 25px;
         }
         
-        .hero h1 .highlight {
-            background: linear-gradient(135deg, #5B9BD5 0%, #90EE90 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            border-radius: 2px;
         }
         
         .hero-subtitle {
-            font-size: 22px;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 40px;
-            max-width: 750px;
+            font-size: 21px;
+            color: rgba(255, 255, 255, 0.88);
+            margin-bottom: 45px;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
-            font-weight: 500;
-            line-height: 1.6;
+            font-weight: 400;
+            line-height: 1.7;
+            padding-top: 10px;
+        }
+        
+        .hero-cta-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         
         .hero-cta {
             display: inline-block;
             background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
             color: white;
-            padding: 19px 45px;
-            font-size: 19px;
+            padding: 18px 40px;
+            font-size: 18px;
             font-weight: 700;
             text-decoration: none;
             border-radius: 12px;
@@ -209,13 +249,18 @@
             box-shadow: 0 15px 45px rgba(40, 167, 69, 0.5);
         }
         
-        .hero-meta {
-            margin-top: 25px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 15px;
+        .hero-cta-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
         
-        /* Container & Sections - Tighter Spacing */
+        .hero-cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 35px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Container & Sections */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -245,7 +290,7 @@
         }
         
         .section-title {
-            font-size: 44px;
+            font-size: 42px;
             font-weight: 800;
             color: #1a1a1a;
             margin-bottom: 18px;
@@ -260,12 +305,12 @@
             margin: 0 auto;
         }
         
-        /* Cards - More Visual Interest */
+        /* Cards */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         
         .card {
@@ -277,6 +322,7 @@
             border: 1px solid #f0f0f0;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
         
         .card::before {
@@ -301,15 +347,9 @@
         }
         
         .card-icon {
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(135deg, #2F5496 0%, #5B9BD5 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 50px;
             margin-bottom: 18px;
-            font-size: 26px;
+            display: block;
         }
         
         .card h3 {
@@ -322,6 +362,7 @@
         .card ul {
             list-style: none;
             padding: 0;
+            text-align: left;
         }
         
         .card li {
@@ -342,219 +383,397 @@
             flex-shrink: 0;
         }
         
+        /* Problem Cards - Dark Blue Border */
+        .problem-card {
+            border: 3px solid #1e3a5f;
+        }
+        
+        /* Success Cards */
         .success-card {
-            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-            border: 2px solid #28a745;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e3f2fd 100%);
+            border: 2px solid #2F5496;
+        }
+        
+        .success-card h3 {
+            color: #1e3a5f;
+            padding-bottom: 15px;
+            margin-bottom: 18px;
+            border-bottom: 3px solid #2F5496;
         }
         
         .success-card li:before {
             content: "✓";
-            color: #28a745;
+            color: #2F5496;
         }
         
-        /* Value Stack - More Visual */
-        .value-stack {
+        /* Differentiators - 4 Boxes */
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .diff-item {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 35px;
+            border-radius: 16px;
+            padding: 30px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #dee2e6;
+            transition: all 0.3s ease;
+            text-align: center;
         }
         
-        .value-item {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 28px;
-            margin-bottom: 18px;
-            border-left: 4px solid #2F5496;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        .diff-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .diff-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .diff-item h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2F5496;
+            margin-bottom: 12px;
+        }
+        
+        .diff-item p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.7;
+            text-align: left;
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .service-item {
+            background: linear-gradient(135deg, #2F5496 0%, #1e3a5f 100%);
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 4px 20px rgba(47, 84, 150, 0.3);
+            border: 1px solid rgba(91, 155, 213, 0.2);
             transition: all 0.3s ease;
         }
         
-        .value-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(47, 84, 150, 0.5);
         }
         
-        .value-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 14px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .value-header h4 {
-            font-size: 20px;
+        .service-item h3 {
+            font-size: 22px;
             font-weight: 700;
-            color: #1a1a1a;
-            margin: 0;
+            color: #ffffff;
+            margin-bottom: 18px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
         }
         
-        .value-price {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 15px;
-            font-weight: 700;
-        }
-        
-        .value-item ul {
+        .service-item ul {
             list-style: none;
             padding: 0;
-            margin-top: 14px;
         }
         
-        .value-item li {
-            padding: 9px 0;
-            padding-left: 28px;
+        .service-item li {
+            padding: 8px 0;
+            padding-left: 25px;
             position: relative;
-            color: #555;
+            color: rgba(255, 255, 255, 0.9);
             font-size: 15px;
             line-height: 1.6;
         }
         
-        .value-item li:before {
+        .service-item li:before {
             content: "•";
             position: absolute;
-            left: 10px;
-            color: #2F5496;
+            left: 8px;
+            color: #90EE90;
             font-weight: bold;
             font-size: 20px;
         }
         
-        /* Pricing Card - More Dynamic */
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
         .pricing-card {
-            background: linear-gradient(135deg, #1e3a5f 0%, #2F5496 100%);
-            border-radius: 24px;
-            padding: 50px;
-            text-align: center;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 35px 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
-            margin: 45px 0;
-            box-shadow: 0 20px 60px rgba(47, 84, 150, 0.3);
         }
         
-        .pricing-card::before {
-            content: '';
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+            border-color: #2F5496;
+        }
+        
+        .pricing-card.featured {
+            border-color: #2F5496;
+            border-width: 3px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .pricing-badge {
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(91, 155, 213, 0.15) 0%, transparent 70%);
-            animation: rotate 30s linear infinite;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .pricing-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .pricing-label {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 17px;
-            margin-bottom: 14px;
-            font-weight: 600;
-        }
-        
-        .original-price {
-            font-size: 34px;
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: line-through;
-            margin-bottom: 10px;
-        }
-        
-        .current-price {
-            font-size: 90px;
-            font-weight: 900;
-            color: #ffffff;
-            line-height: 1;
-            margin: 18px 0;
-            letter-spacing: -3px;
-        }
-        
-        .savings-badge {
-            display: inline-block;
+            top: -12px;
+            right: 20px;
             background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
             color: white;
-            padding: 11px 28px;
-            border-radius: 50px;
-            font-size: 19px;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 11px;
             font-weight: 700;
-            margin-top: 18px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
-        /* Guarantee - More Visual */
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .pricing-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+        
+        .pricing-price {
+            font-size: 42px;
+            font-weight: 900;
+            color: #2F5496;
+            margin: 15px 0 8px 0;
+        }
+        
+        .pricing-timeframe {
+            font-size: 13px;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .pricing-savings {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #28a745;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .pricing-features li {
+            padding: 9px 0;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .pricing-features li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: 700;
+            margin-right: 8px;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        
+        .pricing-features li a {
+            color: #2F5496;
+            text-decoration: none;
+            font-weight: 800;
+        }
+        
+        .pricing-features li a:hover {
+            text-decoration: underline;
+        }
+        
+        .pricing-best-for {
+            background: linear-gradient(135deg, rgba(47, 84, 150, 0.1) 0%, rgba(91, 155, 213, 0.1) 100%);
+            padding: 12px;
+            border-radius: 10px;
+            margin: 18px 0;
+        }
+        
+        .pricing-best-for strong {
+            display: block;
+            color: #2F5496;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+        
+        .pricing-best-for p {
+            color: #555;
+            font-size: 13px;
+            line-height: 1.4;
+            margin: 0;
+        }
+        
+        .pricing-cta {
+            display: block;
+            text-align: center;
+            background: linear-gradient(135deg, #2F5496 0%, #5B9BD5 100%);
+            color: white;
+            padding: 13px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(47, 84, 150, 0.4);
+        }
+        
+        .featured .pricing-cta {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+        
+        /* Guarantee */
         .guarantee {
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-            border-radius: 20px;
-            padding: 45px;
-            border: 3px solid #2F5496;
-            margin: 45px 0;
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border-radius: 24px;
+            padding: 50px 45px;
+            border: 4px solid #28a745;
+            margin: 50px auto;
+            max-width: 900px;
+            text-align: center;
             position: relative;
-            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(40, 167, 69, 0.3);
+        }
+        
+        .guarantee-badge {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 10px 35px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(40, 167, 69, 0.4);
         }
         
         .guarantee-icon {
-            font-size: 55px;
-            margin-bottom: 18px;
+            font-size: 60px;
+            margin-bottom: 20px;
+            margin-top: 15px;
         }
         
         .guarantee h3 {
-            font-size: 34px;
+            font-size: 36px;
             font-weight: 800;
-            color: #2F5496;
+            color: #155724;
             margin-bottom: 22px;
         }
         
         .guarantee p {
             font-size: 19px;
-            color: #1a1a1a;
+            color: #155724;
             line-height: 1.8;
             margin-bottom: 18px;
         }
         
-        .guarantee .highlight {
-            font-weight: 700;
-            color: #2F5496;
-            font-size: 22px;
+        .guarantee .subtext {
+            font-size: 15px;
+            font-style: italic;
+            color: #155724;
+            margin-top: 15px;
         }
         
-        /* Urgency */
-        .urgency {
-            background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
-            border: 3px dashed #ffc107;
-            border-radius: 16px;
-            padding: 25px;
+        /* Process Steps */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .process-step {
             text-align: center;
-            margin: 35px 0;
+            padding: 30px;
         }
         
-        .urgency p {
-            font-size: 19px;
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #2F5496 0%, #5B9BD5 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 800;
+            margin: 0 auto 20px;
+        }
+        
+        .process-step h3 {
+            font-size: 22px;
             font-weight: 700;
-            color: #856404;
-            margin: 0;
+            color: #1a1a1a;
+            margin-bottom: 12px;
         }
         
-        /* FAQ */
+        .process-step p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        /* FAQ - 2 Columns */
         .faq-container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
         
         .faq-item {
             background: #ffffff;
             border-radius: 12px;
             padding: 28px;
-            margin-bottom: 18px;
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
             border: 1px solid #f0f0f0;
             transition: all 0.3s ease;
@@ -565,77 +784,76 @@
         }
         
         .faq-item h4 {
-            font-size: 19px;
+            font-size: 18px;
             font-weight: 700;
             color: #2F5496;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
         
         .faq-item p {
-            font-size: 16px;
+            font-size: 15px;
             color: #555;
             line-height: 1.7;
         }
         
-        /* Info Grid */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 35px 0;
-        }
-        
-        .info-box {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 12px;
-            padding: 28px;
-        }
-        
-        .info-box h3 {
-            font-size: 22px;
-            font-weight: 700;
-            color: #2F5496;
-            margin-bottom: 14px;
-        }
-        
-        .info-box ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .info-box li {
-            padding: 9px 0;
-            font-size: 17px;
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-        
         /* CTA Section */
         .cta-section {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2F5496 100%);
+            padding: 70px 20px;
             text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(91, 155, 213, 0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
         }
         
         .cta-section h2 {
             font-size: 44px;
             font-weight: 800;
-            color: #1a1a1a;
-            margin-bottom: 28px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 35px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .cta-button-large {
             display: inline-block;
             background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
             color: white;
-            padding: 22px 55px;
-            font-size: 22px;
+            padding: 20px 50px;
+            font-size: 20px;
             font-weight: 700;
             text-decoration: none;
             border-radius: 12px;
             transition: all 0.3s ease;
             box-shadow: 0 10px 35px rgba(40, 167, 69, 0.4);
-            margin-bottom: 18px;
+            margin: 0 10px 15px;
         }
         
         .cta-button-large:hover {
@@ -644,15 +862,15 @@
         }
         
         .cta-meta {
-            margin-top: 22px;
-            font-size: 17px;
-            color: #666;
+            margin-top: 20px;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
         }
         
         .cta-meta a {
-            color: #2F5496;
-            font-weight: 700;
+            color: #90EE90;
             text-decoration: none;
+            font-weight: 600;
         }
         
         .cta-meta a:hover {
@@ -663,42 +881,68 @@
         footer {
             background: #1a1a1a;
             color: #ffffff;
-            text-align: center;
-            padding: 45px 20px;
+            padding: 50px 20px 30px;
         }
         
-        footer h3 {
-            font-size: 22px;
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
-        footer p {
+        .footer-column p,
+        .footer-column a {
             font-size: 15px;
-            margin: 8px 0;
             color: rgba(255, 255, 255, 0.8);
-        }
-        
-        footer a {
-            color: #5B9BD5;
             text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            line-height: 1.6;
         }
         
-        footer a:hover {
-            text-decoration: underline;
+        .footer-column a:hover {
+            color: #5B9BD5;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .disclaimer {
-            margin-top: 28px;
             font-size: 13px;
             color: rgba(255, 255, 255, 0.5);
             font-style: italic;
             max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto;
+            line-height: 1.6;
         }
         
         /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .diff-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .faq-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         @media (max-width: 768px) {
             body {
                 padding-top: 70px;
@@ -735,6 +979,23 @@
                 display: block;
             }
             
+            .roadmap-visual {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            
+            .roadmap-icon {
+                font-size: 28px;
+            }
+            
+            .roadmap-label {
+                font-size: 11px;
+            }
+            
+            .roadmap-arrow {
+                font-size: 24px;
+            }
+            
             .hero h1 {
                 font-size: 38px;
             }
@@ -747,11 +1008,12 @@
                 font-size: 32px;
             }
             
-            .current-price {
-                font-size: 60px;
-            }
-            
-            .card-grid {
+            .card-grid,
+            .services-grid,
+            .pricing-grid,
+            .diff-grid,
+            .process-grid,
+            .faq-container {
                 grid-template-columns: 1fr;
             }
             
@@ -759,10 +1021,16 @@
                 padding: 35px 20px;
             }
             
-            .value-stack,
-            .guarantee,
-            .pricing-card {
-                padding: 28px 20px;
+            .guarantee {
+                padding: 35px 20px;
+            }
+            
+            .pricing-price {
+                font-size: 36px;
+            }
+            
+            .cta-section h2 {
+                font-size: 32px;
             }
         }
     </style>
@@ -774,9 +1042,9 @@
             <a href="#hero" class="nav-logo">Financial Coaching by Oreste Simi</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#value">What's Included</a></li>
+                <li><a href="#services">Services</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#guarantee">Guarantee</a></li>
+                <li><a href="#why-me">Why Me</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="https://forms.gle/1DArSLngrPk4Dt8M6" class="nav-cta">Get Started</a></li>
             </ul>
@@ -787,171 +1055,218 @@
     <!-- Hero Section -->
     <div class="hero" id="hero">
         <div class="hero-content">
-            <h1>
-                Transform Your <span class="highlight">Financial Life</span><br>in 90 Days
-            </h1>
+            <div class="roadmap-visual">
+                <div class="roadmap-stage">
+                    <div class="roadmap-icon">🎯</div>
+                    <div class="roadmap-label">Your Goal</div>
+                </div>
+                <div class="roadmap-arrow">→</div>
+                <div class="roadmap-stage">
+                    <div class="roadmap-icon">🗺️</div>
+                    <div class="roadmap-label">Roadmap</div>
+                </div>
+                <div class="roadmap-arrow">→</div>
+                <div class="roadmap-stage">
+                    <div class="roadmap-icon">🤖</div>
+                    <div class="roadmap-label">Automation</div>
+                </div>
+                <div class="roadmap-arrow">→</div>
+                <div class="roadmap-stage">
+                    <div class="roadmap-icon">💎</div>
+                    <div class="roadmap-label">Wealth</div>
+                </div>
+            </div>
+            
+            <h1>Let's Build Your Wealth Roadmap</h1>
             <p class="hero-subtitle">
-                Get complete clarity on your money, build real wealth, and achieve peace of mind about your financial future—guaranteed.
+                I reverse engineer your goals into a personalized wealth roadmap, then help you set up financial automation so your money works for you, while you gain the skills and systems to build wealth independently.
             </p>
-            <a href="https://forms.gle/1DArSLngrPk4Dt8M6" class="hero-cta">Claim Your Spot Now</a>
-            <p class="hero-meta">Only 6 spots available per month • No credit card required</p>
+            <div class="hero-cta-container">
+                <a href="#pricing" class="hero-cta">Explore Coaching Packages</a>
+                <a href="https://forms.gle/1DArSLngrPk4Dt8M6" class="hero-cta hero-cta-secondary">Book Free 20-Min Consultation</a>
+            </div>
         </div>
     </div>
 
     <!-- Problem Section -->
-    <section id="how-it-works">
+    <section id="problem">
         <div class="container">
             <div class="section-header">
                 <div class="section-label">The Challenge</div>
-                <h2 class="section-title">Does This Sound Familiar?</h2>
+                <h2 class="section-title">Is This You?</h2>
             </div>
             
             <div class="card-grid">
-                <div class="card">
-                    <div class="card-icon">💸</div>
-                    <h3>You're Making Money But...</h3>
+                <div class="card problem-card">
+                    <span class="card-icon">💸</span>
+                    <h3>You're Leaving Money on the Table</h3>
                     <ul>
-                        <li>You make good money but feel like you should have more to show for it</li>
-                        <li>You don't have a clear financial roadmap for the next 5 years</li>
+                        <li>You're not maximizing credit card rewards, tax deductions, or employer benefits</li>
+                        <li>You know you should be earning more but don't know how to negotiate a raise</li>
+                        <li>Money comes in and goes out, but you're not sure where it's all going</li>
                     </ul>
                 </div>
                 
-                <div class="card">
-                    <div class="card-icon">📊</div>
-                    <h3>You Want to Build Wealth</h3>
+                <div class="card problem-card">
+                    <span class="card-icon">⚖️</span>
+                    <h3>You Need Both Defense and Offense</h3>
                     <ul>
-                        <li>You want to invest and build wealth but don't know where to start</li>
-                        <li>You're stressed about money and want clarity on your financial future</li>
+                        <li>You either have no emergency fund or too much cash sitting idle</li>
+                        <li>You want to invest and grow wealth but don't have a clear strategy</li>
+                        <li>You're playing defense (saving) but not offense (investing and earning more)</li>
                     </ul>
                 </div>
                 
-                <div class="card">
-                    <div class="card-icon">📉</div>
-                    <h3>You've Tried Before</h3>
+                <div class="card problem-card">
+                    <span class="card-icon">🏡</span>
+                    <h3>You're Facing a Major Financial Decision</h3>
                     <ul>
-                        <li>You have debt but no clear plan to pay it off strategically</li>
-                        <li>You've tried budgeting and financial planning before but couldn't stick with it</li>
+                        <li>Getting married, having kids, or buying a home and need to plan properly</li>
+                        <li>Starting a business or side hustle and don't know how to structure it financially</li>
+                        <li>You're making a big life change and want to make smart money moves</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Solution Section -->
+    <!-- Why Me Section (MOVED UP) -->
+    <section id="why-me" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Why Me</div>
+                <h2 class="section-title">How I'm Different</h2>
+            </div>
+            
+            <div class="diff-grid">
+                <div class="diff-item">
+                    <span class="diff-icon">📚</span>
+                    <h3>Education First Approach</h3>
+                    <p>I teach you the WHY behind every financial decision. You'll understand the principles, not just follow instructions, so you can confidently manage your money for life.</p>
+                </div>
+                
+                <div class="diff-item">
+                    <span class="diff-icon">🎯</span>
+                    <h3>Customized, Not Cookie Cutter</h3>
+                    <p>Your financial plan is built for YOUR goals, YOUR risk tolerance, YOUR life stage. No generic templates, just strategies that actually work for you.</p>
+                </div>
+                
+                <div class="diff-item">
+                    <span class="diff-icon">🤖</span>
+                    <h3>Automation Implementation</h3>
+                    <p>I don't just create a plan and wish you luck. I reverse engineer your goals, then build automated systems that execute the plan for you. Your wealth grows while you focus on life.</p>
+                </div>
+                
+                <div class="diff-item">
+                    <span class="diff-icon">🛡️</span>
+                    <h3>Results Driven Guarantee</h3>
+                    <p>If you complete your package and don't feel confident making financial decisions on your own, I'll keep coaching you at no charge. My goal is your independence, not your dependence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Core Services</div>
+                <h2 class="section-title">What I Help You With</h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3>Money Fundamentals & Cash Flow Optimization</h3>
+                    <ul>
+                        <li>Smart budgeting that actually works for your life</li>
+                        <li>Emergency fund strategy (how much, where to keep it)</li>
+                        <li>Credit cards: maximize rewards, eliminate debt strategically</li>
+                        <li>Credit score optimization</li>
+                    </ul>
+                </div>
+                
+                <div class="service-item">
+                    <h3>Wealth Building & Investment Strategy</h3>
+                    <ul>
+                        <li>Offensive strategies: grow your money through investing</li>
+                        <li>Portfolio construction and asset allocation</li>
+                        <li>Roth vs Traditional: choosing the right accounts</li>
+                    </ul>
+                </div>
+                
+                <div class="service-item">
+                    <h3>Earn More & Career Optimization</h3>
+                    <ul>
+                        <li>Salary negotiation and asking for raises</li>
+                        <li>Side income and entrepreneurial ventures</li>
+                        <li>Retirement planning</li>
+                    </ul>
+                </div>
+                
+                <div class="service-item">
+                    <h3>Tax Strategy & Optimization</h3>
+                    <ul>
+                        <li>Maximize deductions and credits you're missing</li>
+                        <li>Tax efficient investing (tax loss harvesting, Roth conversions)</li>
+                        <li>Business tax strategies (if applicable)</li>
+                        <li>Minimize your tax burden legally</li>
+                    </ul>
+                </div>
+                
+                <div class="service-item">
+                    <h3>Life Transitions & Major Decisions</h3>
+                    <ul>
+                        <li>Having children: financial preparation</li>
+                        <li>Buying vs renting, mortgage decisions</li>
+                        <li>Navigating career changes or relocations</li>
+                    </ul>
+                </div>
+                
+                <div class="service-item">
+                    <h3>Small Business & Entrepreneurship</h3>
+                    <ul>
+                        <li>Starting a business: structure and setup</li>
+                        <li>Separating business and personal finances</li>
+                        <li>Pricing, profitability, and growth strategies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You'll Achieve Section -->
     <section style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
         <div class="container">
             <div class="section-header">
                 <div class="section-label">The Transformation</div>
-                <h2 class="section-title">In 90 Days, You'll Have:</h2>
+                <h2 class="section-title">What You'll Achieve</h2>
             </div>
             
             <div class="card-grid">
                 <div class="card success-card">
+                    <h3>Month 1: Foundation & Automation</h3>
                     <ul>
-                        <li>A fully-funded emergency fund that gives you real financial security</li>
-                        <li>A crystal-clear debt payoff plan with measurable progress</li>
+                        <li>Emergency fund automated (money moves itself every paycheck)</li>
+                        <li>Debt payoff on autopilot (no willpower needed)</li>
+                        <li>Budget clarity (you know where every dollar goes)</li>
                     </ul>
                 </div>
                 
                 <div class="card success-card">
+                    <h3>Month 2: Wealth Building Systems</h3>
                     <ul>
-                        <li>Complete visibility into where every dollar goes</li>
-                        <li>A personalized 5-year financial roadmap with clear milestones</li>
+                        <li>Investment accounts automated (contribution never gets skipped)</li>
+                        <li>Tax optimization strategies implemented</li>
+                        <li>Retirement contributions maxed automatically</li>
                     </ul>
                 </div>
                 
                 <div class="card success-card">
+                    <h3>Month 3: Independence</h3>
                     <ul>
-                        <li>An investment strategy tailored to your goals and risk tolerance</li>
-                        <li>Peace of mind knowing you're on the right track to build real wealth</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Value Stack Section -->
-    <section id="value">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">What's Included</div>
-                <h2 class="section-title">Everything You Get</h2>
-            </div>
-            
-            <div class="value-stack">
-                <div class="value-item">
-                    <div class="value-header">
-                        <h4>Core Program: 6 Private Coaching Sessions</h4>
-                        <span class="value-price">$900 Value</span>
-                    </div>
-                    <ul>
-                        <li>Six 45-minute 1-on-1 sessions over 90 days (every 2 weeks)</li>
-                        <li>Personalized financial roadmap built for YOUR situation</li>
-                        <li>Custom debt payoff strategy (if applicable)</li>
-                        <li>Retirement planning guidance and optimization</li>
-                        <li>Investment allocation plan based on your goals and timeline</li>
-                    </ul>
-                </div>
-                
-                <div class="value-item">
-                    <div class="value-header">
-                        <h4>Unlimited Support Between Sessions</h4>
-                        <span class="value-price">$300 Value</span>
-                    </div>
-                    <ul>
-                        <li>Text and email access for quick questions</li>
-                        <li>No waiting until your next session for urgent decisions</li>
-                        <li>Real-time guidance when life throws curveballs</li>
-                    </ul>
-                </div>
-                
-                <div class="value-item">
-                    <div class="value-header">
-                        <h4>BONUS #1: Complete Financial Toolkit</h4>
-                        <span class="value-price">$297 Value</span>
-                    </div>
-                    <ul>
-                        <li>Net Worth Tracker (monitor your progress monthly)</li>
-                        <li>Debt Demolition Calculator (see exactly when you'll be debt-free)</li>
-                        <li>Budget Mastery Template (know where every dollar goes)</li>
-                        <li>Investment Allocation Guide (start building wealth)</li>
-                        <li>2025 Tax Optimization Cheat Sheet (keep more of your money)</li>
-                    </ul>
-                </div>
-                
-                <div class="value-item">
-                    <div class="value-header">
-                        <h4>BONUS #2: Priority "Financial 911" Access</h4>
-                        <span class="value-price">$197 Value</span>
-                    </div>
-                    <ul>
-                        <li>24-hour response guarantee on urgent questions</li>
-                        <li>Emergency support for major financial decisions</li>
-                        <li>Peace of mind knowing you're not alone</li>
-                    </ul>
-                </div>
-                
-                <div class="value-item">
-                    <div class="value-header">
-                        <h4>BONUS #3: Weekly Accountability System</h4>
-                        <span class="value-price">$147 Value</span>
-                    </div>
-                    <ul>
-                        <li>Weekly check-ins to keep you on track</li>
-                        <li>Progress tracking dashboard</li>
-                        <li>Celebration of your wins (I'm your biggest cheerleader)</li>
-                    </ul>
-                </div>
-                
-                <div class="value-item">
-                    <div class="value-header">
-                        <h4>BONUS #4: The Graduate Advantage</h4>
-                        <span class="value-price">$497 Value</span>
-                    </div>
-                    <ul>
-                        <li>Lifetime access to all future template updates</li>
-                        <li>Exclusive alumni rate if you ever need a tune-up</li>
-                        <li>First access to group workshops (free for graduates)</li>
+                        <li>Complete wealth roadmap in your hands</li>
+                        <li>Systems running 24/7 (your money works while you sleep)</li>
+                        <li>The skills to adjust your automation as life changes</li>
                     </ul>
                 </div>
             </div>
@@ -959,14 +1274,97 @@
     </section>
 
     <!-- Pricing Section -->
-    <section style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);" id="pricing">
+    <section id="pricing">
         <div class="container">
-            <div class="pricing-card">
-                <div class="pricing-content">
-                    <p class="pricing-label">Total Value of Everything</p>
-                    <div class="original-price">$2,338+</div>
-                    <div class="current-price">$1,200</div>
-                    <div class="savings-badge">Save Over $1,100</div>
+            <div class="section-header">
+                <div class="section-label">Investment</div>
+                <h2 class="section-title">Choose Your Package</h2>
+                <p class="section-subtitle">All packages include personalized strategies, financial education, and support between sessions. Choose based on your goals and timeline.</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- Single Session -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Single Session</h3>
+                        <div class="pricing-price">$250</div>
+                        <p class="pricing-timeframe">One 60 minute session</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>One focused coaching session</li>
+                        <li>Session recap and action items</li>
+                        <li>Best for quick wins or specific questions</li>
+                    </ul>
+                    <a href="https://forms.gle/1DArSLngrPk4Dt8M6" class="pricing-cta">Book Single Session</a>
+                </div>
+                
+                <!-- Starter Package -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Starter Package</h3>
+                        <div class="pricing-price">$600</div>
+                        <p class="pricing-timeframe">3 weekly sessions (3 weeks)</p>
+                        <span class="pricing-savings">Save $150</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>3 weekly one on one sessions</li>
+                        <li>Basic financial action plan</li>
+                        <li>Email support between sessions</li>
+                        <li>2 financial templates</li>
+                    </ul>
+                    <div class="pricing-best-for">
+                        <strong>Best For:</strong>
+                        <p>Single focused goal (debt payoff, budget setup, investment start)</p>
+                    </div>
+                    <a href="https://forms.gle/1DArSLngrPk4Dt8M6" class="pricing-cta">Get Started</a>
+                </div>
+                
+                <!-- Foundations Package -->
+                <div class="pricing-card featured">
+                    <span class="pricing-badge">⭐ Most Popular</span>
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Foundations Package</h3>
+                        <div class="pricing-price">$1,200</div>
+                        <p class="pricing-timeframe">6 weekly sessions (6 weeks)</p>
+                        <span class="pricing-savings">Save $300</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>6 weekly one on one sessions</li>
+                        <li>Complete financial roadmap document</li>
+                        <li>UNLIMITED email/text support</li>
+                        <li>Full financial toolkit (5+ templates)</li>
+                        <li>Quarterly check in (3 months after)</li>
+                        <li><a href="#guarantee">100% Risk Free Independence Guarantee</a></li>
+                    </ul>
+                    <div class="pricing-best-for">
+                        <strong>Best For:</strong>
+                        <p>Complete financial overhaul (debt, investing, retirement planning)</p>
+                    </div>
+                    <a href="https://forms.gle/1DArSLngrPk4Dt8M6" class="pricing-cta">Get Started</a>
+                </div>
+                
+                <!-- Executive Package -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Executive Package</h3>
+                        <div class="pricing-price">$2,200</div>
+                        <p class="pricing-timeframe">12 weekly sessions (3 months)</p>
+                        <span class="pricing-savings">Save $800</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>12 weekly one on one sessions</li>
+                        <li>Comprehensive wealth optimization plan</li>
+                        <li>Priority 24 hour response guarantee</li>
+                        <li>Full toolkit + business templates</li>
+                        <li>Business financial planning included</li>
+                        <li>6 monthly check ins after completion</li>
+                        <li><a href="#guarantee">100% Risk Free Independence Guarantee</a></li>
+                    </ul>
+                    <div class="pricing-best-for">
+                        <strong>Best For:</strong>
+                        <p>Business owners, high earners, complex situations requiring deep optimization</p>
+                    </div>
+                    <a href="https://forms.gle/1DArSLngrPk4Dt8M6" class="pricing-cta">Get Started</a>
                 </div>
             </div>
         </div>
@@ -976,55 +1374,48 @@
     <section id="guarantee">
         <div class="container">
             <div class="guarantee">
-                <div style="text-align: center;">
-                    <div class="guarantee-icon">🛡️</div>
-                    <h3>My 90-Day Results Guarantee</h3>
-                    <p><strong>If you show up to every session, do the work I assign, and don't see measurable progress toward your financial goals in 90 days, I'll continue working with you at no charge until you do.</strong></p>
-                    <p>Why? Because I only win when you win. If you're not getting results, I haven't done my job.</p>
-                    <p class="highlight">The only way you lose is if you don't show up.</p>
-                </div>
+                <div class="guarantee-badge">100% RISK-FREE</div>
+                <div class="guarantee-icon">🛡️</div>
+                <h3>The Independence Guarantee</h3>
+                <p>Complete your package. Do the work. If you don't feel confident making financial decisions on your own, <strong>I'll continue coaching you at absolutely no charge</strong> until you do.</p>
+                <p>No fine print. No gotchas. I only win when you win.</p>
+                <p class="subtext">Available on Foundations & Executive Packages</p>
             </div>
         </div>
     </section>
 
-    <!-- CTA 1 -->
-    <div class="cta-section">
-        <div class="container">
-            <a href="https://forms.gle/1DArSLngrPk4Dt8M6" class="cta-button-large">Claim Your Spot Now</a>
-            
-            <div class="urgency">
-                <p>⚠️ Only 6 spots available per month • Waitlist opens for next month once filled</p>
-            </div>
-        </div>
-    </div>
-
     <!-- How It Works -->
-    <section>
+    <section id="how-it-works" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">Details</div>
+                <div class="section-label">Process</div>
                 <h2 class="section-title">How It Works</h2>
             </div>
             
-            <div class="info-grid">
-                <div class="info-box">
-                    <h3>📅 Session Format</h3>
-                    <p style="font-size: 16px; color: #555; line-height: 1.7;">We meet every 2 weeks for 90 days (6 sessions total). Sessions are 45 minutes each and can be virtual via Google Meet or Microsoft Teams. Between sessions, you have unlimited text/email access to me for quick questions.</p>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Free Consultation</h3>
+                    <p>Book a free 20 minute call. We'll discuss your situation, goals, and whether coaching is the right fit.</p>
                 </div>
                 
-                <div class="info-box">
-                    <h3>💳 Payment Options</h3>
-                    <ul>
-                        <li>Pay in Full: $1,200 (best value)</li>
-                        <li>Payment Plan: 3 monthly payments of $450 ($1,350 total)</li>
-                    </ul>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Choose Your Package</h3>
+                    <p>Select the package that matches your needs. Complete the intake form so I can prepare a personalized plan.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Start Building Wealth</h3>
+                    <p>Weekly sessions, ongoing support, and the financial education to make confident decisions for life.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);" id="faq">
+    <section id="faq">
         <div class="container">
             <div class="section-header">
                 <div class="section-label">Questions</div>
@@ -1034,50 +1425,87 @@
             <div class="faq-container">
                 <div class="faq-item">
                     <h4>How is this different from just Googling financial advice?</h4>
-                    <p>Google gives you generic information. I give you a personalized plan based on YOUR income, YOUR debts, YOUR goals, and YOUR life situation. Plus, I hold you accountable and adjust the plan as your life changes. Information is easy to find. Implementation is hard. That's what I help with.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h4>What if I've tried budgeting before and failed?</h4>
-                    <p>Most people fail at budgeting because they use the wrong system for their personality and life. I'll help you find the approach that actually works for you—not some one-size-fits-all spreadsheet you found online.</p>
+                    <p>Google gives you generic information. I give you a personalized plan based on YOUR income, YOUR goals, and YOUR life situation. Plus, I teach you WHY we're making each decision so you gain the financial literacy to make great choices on your own. Information is easy to find. Implementation and true understanding? That's what I provide.</p>
                 </div>
                 
                 <div class="faq-item">
                     <h4>Are you a Certified Financial Planner (CFP)?</h4>
-                    <p>No, I'm not a CFP. I'm a financial coach with a degree in personal finance and years of experience helping people build wealth. I provide education, frameworks, and accountability—not specific investment recommendations like "buy this stock." If you need investment-specific advice, I'll help you find a licensed advisor.</p>
+                    <p>No, I'm not a CFP. I'm a financial coach with a degree in personal finance, business management experience at Caltech, and multiple side businesses. I provide education, frameworks, and accountability, not specific investment product recommendations like "buy this stock." If you need investment specific advice or products, I'll help you find a licensed advisor.</p>
                 </div>
                 
                 <div class="faq-item">
-                    <h4>What happens after the 90 days?</h4>
-                    <p>You'll have all the tools, knowledge, and systems to continue on your own. Many clients choose to check in quarterly for tune-ups (at a discounted alumni rate), but it's not required. My goal is to make you financially independent—not dependent on me.</p>
+                    <h4>What if I've tried budgeting or financial planning before and failed?</h4>
+                    <p>Most people fail because they use the wrong system for their personality and life. I help you find the approach that actually works for YOU, not some one size fits all spreadsheet. Plus, I teach you the principles behind why certain strategies work, so you understand what you're doing and can stick with it.</p>
                 </div>
                 
                 <div class="faq-item">
-                    <h4>What if I'm not sure this is right for me?</h4>
-                    <p>Book a free 20-minute consultation. We'll talk about your situation, and I'll tell you honestly if I think I can help. No pressure, no sales pitch—just a real conversation about your money.</p>
+                    <h4>Do you work with business owners?</h4>
+                    <p>Yes! The Executive Package specifically includes business financial planning: LLC vs S-Corp structuring, tax strategies, profit optimization, and owner compensation strategies. I run multiple side businesses myself, so I understand the unique challenges entrepreneurs face.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4>What happens after my package ends?</h4>
+                    <p>You'll have all the tools, knowledge, and systems to continue on your own. That's the goal: financial independence. Many clients choose quarterly or monthly check ins as alumni, but it's not required. You're equipped to manage your money confidently without me.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4>How do sessions work?</h4>
+                    <p>All sessions are virtual via Google Meet or Microsoft Teams. We meet weekly for 45 to 60 minutes. Between sessions, you have email/text access for quick questions (unlimited for Foundations and Executive packages).</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4>Can I switch packages or add more sessions?</h4>
+                    <p>Absolutely. If you start with Starter and realize you need more, we can upgrade you to Foundations or Executive and credit what you've already paid. You're never locked in. We adjust based on your needs.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h4>What if I'm not sure which package is right for me?</h4>
+                    <p>Book a free 20 minute consultation. We'll discuss your situation and I'll honestly tell you which package makes the most sense, or if coaching isn't the right fit for you at all. No pressure, just real conversation.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Final CTA -->
-    <section style="background: linear-gradient(135deg, #1e3a5f 0%, #2F5496 100%); padding: 80px 20px;">
-        <div class="container" style="text-align: center;">
-            <h2 style="font-size: 44px; font-weight: 800; color: #ffffff; margin-bottom: 25px;">Ready to Transform Your Financial Life?</h2>
-            <p style="font-size: 22px; color: rgba(255, 255, 255, 0.9); margin-bottom: 35px; max-width: 700px; margin-left: auto; margin-right: auto;">Join the 90-Day Financial Freedom Blueprint and take control of your money once and for all.</p>
-            <a href="https://forms.gle/1DArSLngrPk4Dt8M6" class="cta-button-large">Get Started Today</a>
-            <p class="cta-meta" style="color: rgba(255, 255, 255, 0.7);">
-                Or email me with questions: <a href="mailto:orestesimi@convoscout.com" style="color: #90EE90;">orestesimi@convoscout.com</a>
-            </p>
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Master Your Money?</h2>
+            <p>Stop guessing. Start building wealth with confidence.</p>
+            <div>
+                <a href="#pricing" class="cta-button-large">Explore Packages</a>
+                <a href="https://forms.gle/1DArSLngrPk4Dt8M6" class="cta-button-large" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 2px solid rgba(255, 255, 255, 0.3);">Book Free Consultation</a>
+            </div>
+            <p class="cta-meta">Or email me: <a href="mailto:orestesimi@convoscout.com">orestesimi@convoscout.com</a></p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <h3>Oreste Simi</h3>
-        <p>Financial Coach</p>
-        <p><a href="mailto:orestesimi@convoscout.com">orestesimi@convoscout.com</a></p>
-        <p class="disclaimer">This service is educational in nature and does not constitute investment, tax, or legal advice. Always consult licensed professionals for specific recommendations.</p>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Oreste Simi</h3>
+                <p>Financial Coach</p>
+                <p><a href="mailto:orestesimi@convoscout.com">orestesimi@convoscout.com</a></p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#services">Services</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Get Started</h3>
+                <a href="https://forms.gle/1DArSLngrPk4Dt8M6">Book Consultation</a>
+                <a href="https://forms.gle/1DArSLngrPk4Dt8M6">Intake Form</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="disclaimer">This service is educational in nature and does not constitute investment, tax, or legal advice. Always consult licensed professionals for specific recommendations.</p>
+        </div>
     </footer>
     
     <script>
