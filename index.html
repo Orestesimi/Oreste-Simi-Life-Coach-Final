@@ -108,7 +108,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            background: #1e3a5f;
             padding: 12px 20px;
             text-align: center;
             z-index: 999;
@@ -433,6 +433,67 @@
         .success-card li:before {
             content: "✓";
             color: #2F5496;
+        }
+        
+        /* Carousel */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-dot.active {
+            background: #2F5496;
+            width: 12px;
+            height: 12px;
+        }
+        
+        /* Horizontal Scroll */
+        .horizontal-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding-bottom: 10px;
+        }
+        
+        .horizontal-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .horizontal-scroll .card {
+            min-width: 280px;
+            flex-shrink: 0;
+            scroll-snap-align: start;
         }
         
         /* Differentiators - 4 Boxes */
@@ -1000,14 +1061,6 @@
             .pricing-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
-            .diff-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .faq-container {
-                grid-template-columns: 1fr;
-            }
         }
         
         @media (max-width: 768px) {
@@ -1052,7 +1105,7 @@
             }
             
             .roadmap-visual {
-                gap: 4px;
+                gap: 3px;
             }
             
             .roadmap-stage {
@@ -1060,7 +1113,7 @@
             }
             
             .roadmap-icon {
-                font-size: 24px;
+                font-size: 22px;
             }
             
             .roadmap-label {
@@ -1068,8 +1121,8 @@
             }
             
             .roadmap-arrow {
-                font-size: 18px;
-                margin: 0 2px;
+                font-size: 16px;
+                margin: 0 1px;
             }
             
             .hero h1 {
@@ -1084,40 +1137,211 @@
                 font-size: 32px;
             }
             
-            .card-grid,
-            .services-grid,
-            .pricing-grid,
-            .diff-grid,
-            .process-grid,
-            .faq-container {
-                grid-template-columns: 1fr;
-            }
-            
             section {
-                padding: 30px 15px;
+                padding: 25px 15px;
             }
             
-            .card {
+            /* Mobile: Horizontal Scroll for "Is This You?" */
+            #problem .card-grid {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                gap: 15px;
+            }
+            
+            #problem .card-grid::-webkit-scrollbar {
+                display: none;
+            }
+            
+            #problem .card {
+                min-width: 280px;
+                flex-shrink: 0;
+                scroll-snap-align: start;
                 padding: 25px;
             }
             
+            /* Mobile: 2x2 Grid for Why Me */
+            .diff-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .diff-item {
+                padding: 18px 12px;
+            }
+            
+            .diff-icon {
+                font-size: 32px;
+                margin-bottom: 10px;
+            }
+            
+            .diff-item h3 {
+                font-size: 15px;
+                margin-bottom: 8px;
+            }
+            
+            .diff-item p {
+                font-size: 12px;
+                line-height: 1.5;
+            }
+            
+            /* Mobile: 2x3 Grid for Services */
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .service-item {
+                padding: 20px 15px;
+            }
+            
+            .service-item h3 {
+                font-size: 16px;
+                margin-bottom: 12px;
+                padding-bottom: 10px;
+                flex-direction: column;
+                gap: 6px;
+            }
+            
+            .service-icon {
+                font-size: 24px;
+            }
+            
+            .service-item li {
+                padding: 5px 0;
+                padding-left: 20px;
+                font-size: 13px;
+            }
+            
+            .service-item li:before {
+                left: 5px;
+                font-size: 16px;
+            }
+            
+            /* Mobile: Carousel for "What You'll Achieve" */
+            .carousel-container {
+                display: block;
+            }
+            
+            .carousel-track {
+                display: flex;
+            }
+            
+            .carousel-slide {
+                min-width: 100%;
+            }
+            
+            .carousel-slide .card {
+                padding: 25px;
+            }
+            
+            /* Mobile: 2x2 Grid for How It Works */
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .process-step {
+                padding: 15px 10px;
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                margin-bottom: 12px;
+            }
+            
+            .process-step h3 {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+            
+            .process-step p {
+                font-size: 13px;
+                line-height: 1.5;
+            }
+            
+            /* Mobile: 2x4 Grid for FAQ */
+            .faq-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .faq-item {
+                padding: 18px 14px;
+            }
+            
+            .faq-item h4 {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+            
+            .faq-item p {
+                font-size: 12px;
+                line-height: 1.6;
+            }
+            
+            /* Mobile: Pricing stays 2x2 */
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            
+            .pricing-card {
+                padding: 20px 15px;
+            }
+            
+            .pricing-price {
+                font-size: 32px;
+            }
+            
+            .pricing-title {
+                font-size: 16px;
+            }
+            
+            .pricing-features li {
+                font-size: 12px;
+                padding: 6px 0;
+            }
+            
+            .pricing-best-for {
+                padding: 10px;
+                margin: 12px 0;
+            }
+            
+            .pricing-best-for strong {
+                font-size: 11px;
+            }
+            
+            .pricing-best-for p {
+                font-size: 11px;
+            }
+            
             .guarantee {
-                padding: 40px 20px;
-                margin-top: 40px;
+                padding: 35px 18px;
+                margin-top: 30px;
             }
             
             .guarantee-badge {
                 top: -14px;
-                padding: 8px 25px;
+                padding: 8px 22px;
                 font-size: 13px;
             }
             
             .guarantee-icon {
-                margin-top: 20px;
+                margin-top: 18px;
+                font-size: 50px;
             }
             
-            .pricing-price {
-                font-size: 36px;
+            .guarantee h3 {
+                font-size: 28px;
+            }
+            
+            .guarantee p {
+                font-size: 16px;
             }
             
             .cta-section h2 {
@@ -1339,33 +1563,40 @@
                 <h2 class="section-title">What You'll Achieve</h2>
             </div>
             
-            <div class="card-grid">
-                <div class="card success-card">
-                    <h3>Month 1: Foundation & Automation</h3>
-                    <ul>
-                        <li>Emergency fund automated (money moves itself every paycheck)</li>
-                        <li>Debt payoff on autopilot (no willpower needed)</li>
-                        <li>Budget clarity (you know where every dollar goes)</li>
-                    </ul>
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">
+                        <div class="card success-card">
+                            <h3>Month 1: Foundation & Automation</h3>
+                            <ul>
+                                <li>Emergency fund automated (money moves itself every paycheck)</li>
+                                <li>Debt payoff on autopilot (no willpower needed)</li>
+                                <li>Budget clarity (you know where every dollar goes)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="card success-card">
+                            <h3>Month 2: Wealth Building Systems</h3>
+                            <ul>
+                                <li>Investment accounts automated (contribution never gets skipped)</li>
+                                <li>Tax optimization strategies implemented</li>
+                                <li>Retirement contributions maxed automatically</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="card success-card">
+                            <h3>Month 3: Independence</h3>
+                            <ul>
+                                <li>Complete wealth roadmap in your hands</li>
+                                <li>Systems running 24/7 (your money works while you sleep)</li>
+                                <li>The skills to adjust your automation as life changes</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="card success-card">
-                    <h3>Month 2: Wealth Building Systems</h3>
-                    <ul>
-                        <li>Investment accounts automated (contribution never gets skipped)</li>
-                        <li>Tax optimization strategies implemented</li>
-                        <li>Retirement contributions maxed automatically</li>
-                    </ul>
-                </div>
-                
-                <div class="card success-card">
-                    <h3>Month 3: Independence</h3>
-                    <ul>
-                        <li>Complete wealth roadmap in your hands</li>
-                        <li>Systems running 24/7 (your money works while you sleep)</li>
-                        <li>The skills to adjust your automation as life changes</li>
-                    </ul>
-                </div>
+                <div class="carousel-dots" id="carouselDots"></div>
             </div>
         </div>
     </section>
@@ -1386,7 +1617,6 @@
                         <h3 class="pricing-title">Single Session</h3>
                         <div class="pricing-price">$250</div>
                         <p class="pricing-timeframe">One 60 minute session</p>
-                        <p class="pricing-payment">Payment plans available</p>
                     </div>
                     <ul class="pricing-features">
                         <li>One focused coaching session</li>
@@ -1403,7 +1633,6 @@
                         <div class="pricing-price">$600</div>
                         <p class="pricing-timeframe">3 weekly sessions (3 weeks)</p>
                         <span class="pricing-savings">Save $150</span>
-                        <p class="pricing-payment">Payment plans available</p>
                     </div>
                     <ul class="pricing-features">
                         <li>3 weekly one on one sessions</li>
@@ -1594,7 +1823,7 @@
                 <p>Financial Coach</p>
                 <p><a href="mailto:orestesimi@convoscout.com">orestesimi@convoscout.com</a></p>
                 <div class="footer-social">
-                    <a href="https://www.linkedin.com/in/oreste-simi" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/in/orestesimi/" target="_blank" rel="noopener" aria-label="LinkedIn">
                         <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                         </svg>
@@ -1625,6 +1854,7 @@
     
     <script>
         (function() {
+            // Mobile menu toggle
             var toggle = document.getElementById('mobileMenuToggle');
             var nav = document.getElementById('navLinks');
             
@@ -1648,6 +1878,69 @@
                         }
                     };
                 }
+            }
+            
+            // Carousel functionality (mobile only)
+            if (window.innerWidth <= 768) {
+                var track = document.getElementById('carouselTrack');
+                var dotsContainer = document.getElementById('carouselDots');
+                var slides = track.querySelectorAll('.carousel-slide');
+                var currentSlide = 0;
+                
+                // Create dots
+                for (var i = 0; i < slides.length; i++) {
+                    var dot = document.createElement('button');
+                    dot.className = 'carousel-dot';
+                    if (i === 0) dot.classList.add('active');
+                    dot.setAttribute('data-index', i);
+                    dotsContainer.appendChild(dot);
+                }
+                
+                var dots = dotsContainer.querySelectorAll('.carousel-dot');
+                
+                function goToSlide(index) {
+                    currentSlide = index;
+                    track.style.transform = 'translateX(-' + (index * 100) + '%)';
+                    
+                    dots.forEach(function(dot, i) {
+                        if (i === index) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                }
+                
+                // Dot click handlers
+                dots.forEach(function(dot) {
+                    dot.addEventListener('click', function() {
+                        goToSlide(parseInt(this.getAttribute('data-index')));
+                    });
+                });
+                
+                // Touch swipe support
+                var startX = 0;
+                var currentX = 0;
+                
+                track.addEventListener('touchstart', function(e) {
+                    startX = e.touches[0].clientX;
+                });
+                
+                track.addEventListener('touchmove', function(e) {
+                    currentX = e.touches[0].clientX;
+                });
+                
+                track.addEventListener('touchend', function() {
+                    var diff = startX - currentX;
+                    
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0 && currentSlide < slides.length - 1) {
+                            goToSlide(currentSlide + 1);
+                        } else if (diff < 0 && currentSlide > 0) {
+                            goToSlide(currentSlide - 1);
+                        }
+                    }
+                });
             }
         })();
     </script>
