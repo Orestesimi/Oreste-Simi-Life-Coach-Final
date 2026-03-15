@@ -5,1353 +5,242 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financial Coaching by Oreste Simi | Build Your Wealth Roadmap</title>
     <meta name="description" content="I reverse engineer your goals into a personalized wealth roadmap and set up financial automation so your money works for you.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background: #ffffff;
-            overflow-x: hidden;
-            padding-top: 75px;
-        }
-        
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(30, 58, 95, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 40px;
-        }
-        
-        .nav-logo {
-            font-size: 19px;
-            font-weight: 800;
-            color: #ffffff;
-            text-decoration: none;
-            letter-spacing: -0.3px;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: #90EE90;
-        }
-        
-        .nav-cta {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white !important;
-            padding: 9px 22px;
-            border-radius: 8px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
-        }
-        
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 26px;
-            cursor: pointer;
-            padding: 5px 10px;
-        }
-        
-        /* Sticky Mobile CTA */
-        .sticky-mobile-cta {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #1e3a5f;
-            padding: 12px 20px;
-            text-align: center;
-            z-index: 999;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .sticky-mobile-cta a {
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #1e3a5f 0%, #2F5496 50%, #1e3a5f 100%);
-            min-height: 85vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding: 50px 20px 40px;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(91, 155, 213, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(47, 84, 150, 0.2) 0%, transparent 50%);
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(91, 155, 213, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            top: -200px;
-            right: -200px;
-            animation: float 20s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-50px, 50px) scale(1.1); }
-        }
-        
-        .hero-content {
-            max-width: 1000px;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .roadmap-visual {
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        
-        .roadmap-stage {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .roadmap-icon {
-            font-size: 36px;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-        }
-        
-        .roadmap-label {
-            font-size: 13px;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.85);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .roadmap-arrow {
-            font-size: 28px;
-            color: rgba(255, 255, 255, 0.7);
-            animation: bounce 2s ease-in-out infinite;
-            margin: 0 5px;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateX(0); opacity: 0.7; }
-            50% { transform: translateX(8px); opacity: 1; }
-        }
-        
-        .hero h1 {
-            font-size: 72px;
-            font-weight: 900;
-            color: #ffffff;
-            margin-bottom: 20px;
-            line-height: 1.1;
-            letter-spacing: -2px;
-            position: relative;
-            padding-bottom: 25px;
-        }
-        
-        .hero h1::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-            border-radius: 2px;
-        }
-        
-        .hero-subtitle {
-            font-size: 21px;
-            color: rgba(255, 255, 255, 0.88);
-            margin-bottom: 45px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 400;
-            line-height: 1.7;
-            padding-top: 10px;
-        }
-        
-        .hero-cta-container {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-        
-        .hero-cta {
-            display: inline-block;
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white;
-            padding: 18px 40px;
-            font-size: 18px;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 35px rgba(40, 167, 69, 0.4);
-        }
-        
-        .hero-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 45px rgba(40, 167, 69, 0.5);
-        }
-        
-        .hero-cta-secondary {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .hero-cta-secondary:hover {
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 10px 35px rgba(255, 255, 255, 0.2);
-        }
-        
-        .hero-urgency {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.75);
-            font-weight: 600;
-            margin-top: 10px;
-        }
-        
-        /* Container & Sections */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        section {
-            padding: 50px 20px;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .section-label {
-            display: inline-block;
-            color: #2F5496;
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, rgba(47, 84, 150, 0.1) 0%, rgba(91, 155, 213, 0.1) 100%);
-            padding: 6px 18px;
-            border-radius: 20px;
-        }
-        
-        .section-title {
-            font-size: 42px;
-            font-weight: 800;
-            color: #1a1a1a;
-            margin-bottom: 18px;
-            line-height: 1.2;
-            letter-spacing: -1px;
-        }
-        
-        .section-subtitle {
-            font-size: 19px;
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        /* Cards */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-        
-        .card {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 35px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border: 1px solid #f0f0f0;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-        
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(135deg, #2F5496 0%, #5B9BD5 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
-        }
-        
-        .card:hover::before {
-            opacity: 1;
-        }
-        
-        .card-icon {
-            font-size: 50px;
-            margin-bottom: 18px;
-            display: block;
-        }
-        
-        .card h3 {
-            font-size: 22px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 14px;
-        }
-        
-        .card ul {
-            list-style: none;
-            padding: 0;
-            text-align: left;
-        }
-        
-        .card li {
-            padding: 10px 0;
-            color: #555;
-            font-size: 15px;
-            display: flex;
-            align-items: flex-start;
-            line-height: 1.6;
-        }
-        
-        .card li:before {
-            content: "→";
-            color: #2F5496;
-            font-weight: 700;
-            margin-right: 12px;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-        
-        /* Problem Cards - Dark Blue Border */
-        .problem-card {
-            border: 3px solid #1e3a5f;
-        }
-        
-        /* Success Cards */
-        .success-card {
-            background: linear-gradient(135deg, #f0f7ff 0%, #e3f2fd 100%);
-            border: 2px solid #2F5496;
-        }
-        
-        .success-card h3 {
-            color: #1e3a5f;
-            padding-bottom: 15px;
-            margin-bottom: 18px;
-            border-bottom: 3px solid #2F5496;
-        }
-        
-        .success-card li:before {
-            content: "✓";
-            color: #2F5496;
-        }
-        
-        /* Carousel */
-        .carousel-container {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .carousel-track {
-            display: flex;
-            transition: transform 0.4s ease;
-        }
-        
-        .carousel-slide {
-            min-width: 100%;
-            flex-shrink: 0;
-        }
-        
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ccc;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .carousel-dot.active {
-            background: #2F5496;
-            width: 12px;
-            height: 12px;
-        }
-        
-        /* Horizontal Scroll */
-        .horizontal-scroll {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            padding-bottom: 10px;
-        }
-        
-        .horizontal-scroll::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .horizontal-scroll .card {
-            min-width: 280px;
-            flex-shrink: 0;
-            scroll-snap-align: start;
-        }
-        
-        /* Differentiators - 4 Boxes */
-        .diff-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-top: 40px;
-        }
-        
-        .diff-item {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 16px;
-            padding: 30px 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid #dee2e6;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        
-        .diff-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
-        }
-        
-        .diff-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-            display: block;
-        }
-        
-        .diff-item h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #2F5496;
-            margin-bottom: 12px;
-        }
-        
-        .diff-item p {
-            color: #555;
-            font-size: 14px;
-            line-height: 1.7;
-            text-align: left;
-        }
-        
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-        
-        .service-item {
-            background: linear-gradient(135deg, #2F5496 0%, #1e3a5f 100%);
-            border-radius: 16px;
-            padding: 35px;
-            box-shadow: 0 4px 20px rgba(47, 84, 150, 0.3);
-            border: 1px solid rgba(91, 155, 213, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .service-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 35px rgba(47, 84, 150, 0.5);
-        }
-        
-        .service-item h3 {
-            font-size: 22px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 18px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .service-icon {
-            font-size: 28px;
-        }
-        
-        .service-item ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .service-item li {
-            padding: 8px 0;
-            padding-left: 25px;
-            position: relative;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 15px;
-            line-height: 1.6;
-        }
-        
-        .service-item li:before {
-            content: "•";
-            position: absolute;
-            left: 8px;
-            color: #90EE90;
-            font-weight: bold;
-            font-size: 20px;
-        }
-        
-        /* Pricing */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-top: 40px;
-        }
-        
-        .pricing-card {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 35px 25px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 2px solid #f0f0f0;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
-            border-color: #2F5496;
-        }
-        
-        .pricing-card.featured {
-            border-color: #2F5496;
-            border-width: 3px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        }
-        
-        .pricing-badge {
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white;
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-        
-        .pricing-title {
-            font-size: 20px;
-            font-weight: 800;
-            color: #1a1a1a;
-            margin-bottom: 8px;
-        }
-        
-        .pricing-price {
-            font-size: 42px;
-            font-weight: 900;
-            color: #2F5496;
-            margin: 15px 0 8px 0;
-        }
-        
-        .pricing-timeframe {
-            font-size: 13px;
-            color: #666;
-            font-weight: 500;
-        }
-        
-        .pricing-payment {
-            font-size: 12px;
-            color: #28a745;
-            font-weight: 600;
-            margin-top: 8px;
-            font-style: italic;
-        }
-        
-        .pricing-savings {
-            display: inline-block;
-            background: #e8f5e9;
-            color: #28a745;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: 700;
-            margin-top: 8px;
-        }
-        
-        .pricing-features {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-        }
-        
-        .pricing-features li {
-            padding: 9px 0;
-            color: #555;
-            font-size: 14px;
-            line-height: 1.5;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .pricing-features li:before {
-            content: "✓";
-            color: #28a745;
-            font-weight: 700;
-            margin-right: 8px;
-            font-size: 16px;
-            flex-shrink: 0;
-        }
-        
-        .pricing-features li a {
-            color: #2F5496;
-            text-decoration: none;
-            font-weight: 800;
-        }
-        
-        .pricing-features li a:hover {
-            text-decoration: underline;
-        }
-        
-        .pricing-best-for {
-            background: linear-gradient(135deg, rgba(47, 84, 150, 0.1) 0%, rgba(91, 155, 213, 0.1) 100%);
-            padding: 12px;
-            border-radius: 10px;
-            margin: 18px 0;
-        }
-        
-        .pricing-best-for strong {
-            display: block;
-            color: #2F5496;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 5px;
-        }
-        
-        .pricing-best-for p {
-            color: #555;
-            font-size: 13px;
-            line-height: 1.4;
-            margin: 0;
-        }
-        
-        .pricing-cta {
-            display: block;
-            text-align: center;
-            background: linear-gradient(135deg, #2F5496 0%, #5B9BD5 100%);
-            color: white;
-            padding: 13px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            transition: all 0.3s ease;
-        }
-        
-        .pricing-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(47, 84, 150, 0.4);
-        }
-        
-        .featured .pricing-cta {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-        }
-        
-        /* Guarantee */
-        .guarantee {
-            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
-            border-radius: 24px;
-            padding: 50px 45px;
-            border: 4px solid #28a745;
-            margin: 50px auto;
-            max-width: 900px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 10px 40px rgba(40, 167, 69, 0.3);
-        }
-        
-        .guarantee-badge {
-            position: absolute;
-            top: -18px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white;
-            padding: 10px 35px;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 20px rgba(40, 167, 69, 0.4);
-        }
-        
-        .guarantee-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-            margin-top: 15px;
-        }
-        
-        .guarantee h3 {
-            font-size: 36px;
-            font-weight: 800;
-            color: #155724;
-            margin-bottom: 22px;
-        }
-        
-        .guarantee p {
-            font-size: 19px;
-            color: #155724;
-            line-height: 1.8;
-            margin-bottom: 18px;
-        }
-        
-        .guarantee .subtext {
-            font-size: 15px;
-            font-style: italic;
-            color: #155724;
-            margin-top: 15px;
-        }
-        
-        /* Process Steps */
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-        
-        .process-step {
-            text-align: center;
-            padding: 25px;
-        }
-        
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #2F5496 0%, #5B9BD5 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            font-weight: 800;
-            margin: 0 auto 20px;
-        }
-        
-        .process-step h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 12px;
-        }
-        
-        .process-step p {
-            color: #555;
-            font-size: 15px;
-            line-height: 1.7;
-        }
-        
-        /* FAQ - 2 Columns */
-        .faq-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-        
-        .faq-item {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 28px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-            border: 1px solid #f0f0f0;
-            transition: all 0.3s ease;
-        }
-        
-        .faq-item:hover {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .faq-item h4 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #2F5496;
-            margin-bottom: 12px;
-        }
-        
-        .faq-item p {
-            font-size: 15px;
-            color: #555;
-            line-height: 1.7;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #1e3a5f 0%, #2F5496 100%);
-            padding: 70px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(91, 155, 213, 0.1) 0%, transparent 70%);
-            animation: rotate 30s linear infinite;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .cta-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .cta-section h2 {
-            font-size: 44px;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 20px;
-        }
-        
-        .cta-section p {
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 35px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .cta-button-large {
-            display: inline-block;
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white;
-            padding: 20px 50px;
-            font-size: 20px;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 35px rgba(40, 167, 69, 0.4);
-            margin: 0 10px 15px;
-        }
-        
-        .cta-button-large:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 45px rgba(40, 167, 69, 0.5);
-        }
-        
-        .cta-meta {
-            margin-top: 20px;
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .cta-meta a {
-            color: #90EE90;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        .cta-meta a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: #ffffff;
-            padding: 50px 20px 30px;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-column h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        
-        .footer-column p,
-        .footer-column a {
-            font-size: 15px;
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 8px;
-            line-height: 1.6;
-        }
-        
-        .footer-column a:hover {
-            color: #5B9BD5;
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-        }
-        
-        .footer-social a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-social a:hover {
-            background: #0077b5;
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .disclaimer {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.5);
-            font-style: italic;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-        
-        /* Mobile Responsive */
-        @media (max-width: 1024px) {
-            .pricing-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: #1a1a1a; background: #ffffff; overflow-x: hidden; padding-top: 75px; }
+        
+        nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(30, 58, 95, 0.98); backdrop-filter: blur(10px); z-index: 1000; box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; }
+        .nav-logo { font-size: 19px; font-weight: 800; color: #ffffff; text-decoration: none; letter-spacing: -0.3px; }
+        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+        .nav-links a { color: rgba(255, 255, 255, 0.9); text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.3s ease; }
+        .nav-links a:hover { color: #90EE90; }
+        .nav-cta { background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white !important; padding: 9px 22px; border-radius: 8px; font-weight: 700; transition: all 0.3s ease; }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4); }
+        .mobile-menu-toggle { display: none; background: none; border: none; color: white; font-size: 26px; cursor: pointer; padding: 5px 10px; }
+        
+        .sticky-mobile-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: transparent; padding: 12px 15px; z-index: 999; pointer-events: none; }
+        .sticky-mobile-cta a { display: block; background: linear-gradient(135deg, #1e3a5f 0%, #2F5496 100%); color: white; text-decoration: none; font-weight: 700; font-size: 16px; padding: 16px; border-radius: 12px; text-align: center; box-shadow: 0 4px 20px rgba(30, 58, 95, 0.5); pointer-events: all; animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); box-shadow: 0 4px 20px rgba(30, 58, 95, 0.5); } 50% { transform: scale(1.02); box-shadow: 0 6px 25px rgba(30, 58, 95, 0.7); } }
+        
+        .hero { background: linear-gradient(135deg, #1e3a5f 0%, #2F5496 50%, #1e3a5f 100%); min-height: 85vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 50px 20px 40px; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 50%, rgba(91, 155, 213, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(47, 84, 150, 0.2) 0%, transparent 50%); }
+        .hero::after { content: ''; position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(91, 155, 213, 0.1) 0%, transparent 70%); border-radius: 50%; top: -200px; right: -200px; animation: float 20s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-50px, 50px) scale(1.1); } }
+        
+        .hero-content { max-width: 1000px; text-align: center; position: relative; z-index: 2; }
+        .roadmap-visual { margin-bottom: 40px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .roadmap-stage { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .roadmap-icon { font-size: 36px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)); }
+        .roadmap-label { font-size: 13px; font-weight: 700; color: rgba(255, 255, 255, 0.85); text-transform: uppercase; letter-spacing: 0.5px; }
+        .roadmap-arrow { font-size: 28px; color: rgba(255, 255, 255, 0.7); animation: bounce 2s ease-in-out infinite; margin: 0 5px; }
+        @keyframes bounce { 0%, 100% { transform: translateX(0); opacity: 0.7; } 50% { transform: translateX(8px); opacity: 1; } }
+        
+        .hero h1 { font-size: 72px; font-weight: 900; color: #ffffff; margin-bottom: 20px; line-height: 1.1; letter-spacing: -2px; position: relative; padding-bottom: 25px; }
+        .hero h1::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 4px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent); border-radius: 2px; }
+        .hero-subtitle { font-size: 21px; color: rgba(255, 255, 255, 0.88); margin-bottom: 45px; max-width: 900px; margin-left: auto; margin-right: auto; font-weight: 400; line-height: 1.7; padding-top: 10px; }
+        .hero-cta-container { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+        .hero-cta { display: inline-block; background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; padding: 18px 40px; font-size: 18px; font-weight: 700; text-decoration: none; border-radius: 12px; transition: all 0.3s ease; box-shadow: 0 10px 35px rgba(40, 167, 69, 0.4); }
+        .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 15px 45px rgba(40, 167, 69, 0.5); }
+        .hero-cta-secondary { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 2px solid rgba(255, 255, 255, 0.3); }
+        .hero-cta-secondary:hover { background: rgba(255, 255, 255, 0.25); box-shadow: 0 10px 35px rgba(255, 255, 255, 0.2); }
+        .hero-urgency { font-size: 14px; color: rgba(255, 255, 255, 0.75); font-weight: 600; margin-top: 10px; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 50px 20px; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-label { display: inline-block; color: #2F5496; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; background: linear-gradient(135deg, rgba(47, 84, 150, 0.1) 0%, rgba(91, 155, 213, 0.1) 100%); padding: 6px 18px; border-radius: 20px; }
+        .section-title { font-size: 42px; font-weight: 800; color: #1a1a1a; margin-bottom: 18px; line-height: 1.2; letter-spacing: -1px; }
+        .section-subtitle { font-size: 19px; color: #666; max-width: 700px; margin: 0 auto; }
+        
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 30px; }
+        .card { background: #ffffff; border-radius: 16px; padding: 35px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease; border: 1px solid #f0f0f0; position: relative; overflow: hidden; text-align: center; }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(135deg, #2F5496 0%, #5B9BD5 100%); opacity: 0; transition: opacity 0.3s ease; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12); }
+        .card:hover::before { opacity: 1; }
+        .card-icon { font-size: 50px; margin-bottom: 18px; display: block; }
+        .card h3 { font-size: 22px; font-weight: 700; color: #1a1a1a; margin-bottom: 14px; }
+        .card ul { list-style: none; padding: 0; text-align: left; }
+        .card li { padding: 10px 0; color: #555; font-size: 15px; display: flex; align-items: flex-start; line-height: 1.6; }
+        .card li:before { content: "→"; color: #2F5496; font-weight: 700; margin-right: 12px; font-size: 18px; flex-shrink: 0; }
+        .problem-card { border: 3px solid #1e3a5f; }
+        
+        .success-card { background: linear-gradient(135deg, #f0f7ff 0%, #e3f2fd 100%); border: 2px solid #2F5496; }
+        .success-card h3 { color: #1e3a5f; padding-bottom: 15px; margin-bottom: 18px; border-bottom: 3px solid #2F5496; }
+        .success-card li:before { content: "✓"; color: #2F5496; }
+        
+        .diff-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; }
+        .diff-item { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 16px; padding: 30px 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid #dee2e6; transition: all 0.3s ease; text-align: center; }
+        .diff-item:hover { transform: translateY(-5px); box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12); }
+        .diff-icon { font-size: 40px; margin-bottom: 15px; display: block; }
+        .diff-item h3 { font-size: 18px; font-weight: 700; color: #2F5496; margin-bottom: 12px; }
+        .diff-item p { color: #555; font-size: 14px; line-height: 1.7; text-align: left; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; margin-top: 40px; }
+        .service-item { background: linear-gradient(135deg, #2F5496 0%, #1e3a5f 100%); border-radius: 16px; padding: 35px; box-shadow: 0 4px 20px rgba(47, 84, 150, 0.3); border: 1px solid rgba(91, 155, 213, 0.2); transition: all 0.3s ease; }
+        .service-item:hover { transform: translateY(-5px); box-shadow: 0 10px 35px rgba(47, 84, 150, 0.5); }
+        .service-item h3 { font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 18px; padding-bottom: 15px; border-bottom: 2px solid rgba(255, 255, 255, 0.2); display: flex; align-items: center; gap: 12px; }
+        .service-icon { font-size: 28px; }
+        .service-item ul { list-style: none; padding: 0; }
+        .service-item li { padding: 8px 0; padding-left: 25px; position: relative; color: rgba(255, 255, 255, 0.9); font-size: 15px; line-height: 1.6; }
+        .service-item li:before { content: "•"; position: absolute; left: 8px; color: #90EE90; font-weight: bold; font-size: 20px; }
+        
+        .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; }
+        .pricing-card { background: #ffffff; border-radius: 20px; padding: 35px 25px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 2px solid #f0f0f0; transition: all 0.3s ease; position: relative; }
+        .pricing-card:hover { transform: translateY(-8px); box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15); border-color: #2F5496; }
+        .pricing-card.featured { border-color: #2F5496; border-width: 3px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); }
+        .pricing-badge { position: absolute; top: 15px; right: -8px; background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; padding: 8px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 8px 50%); box-shadow: 0 2px 10px rgba(40, 167, 69, 0.4); }
+        .pricing-header { text-align: center; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 2px solid #f0f0f0; }
+        .pricing-title { font-size: 20px; font-weight: 800; color: #1a1a1a; margin-bottom: 8px; }
+        .pricing-price { font-size: 42px; font-weight: 900; color: #2F5496; margin: 15px 0 8px 0; }
+        .pricing-timeframe { font-size: 13px; color: #666; font-weight: 500; }
+        .pricing-payment { font-size: 12px; color: #28a745; font-weight: 600; margin-top: 8px; font-style: italic; }
+        .pricing-savings { display: inline-block; background: #e8f5e9; color: #28a745; padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: 700; margin-top: 8px; }
+        .pricing-features { list-style: none; padding: 0; margin: 20px 0; }
+        .pricing-features li { padding: 9px 0; color: #555; font-size: 14px; line-height: 1.5; display: flex; align-items: flex-start; }
+        .pricing-features li:before { content: "✓"; color: #28a745; font-weight: 700; margin-right: 8px; font-size: 16px; flex-shrink: 0; }
+        .pricing-features li a { color: #2F5496; text-decoration: none; font-weight: 800; }
+        .pricing-features li a:hover { text-decoration: underline; }
+        .pricing-best-for { background: linear-gradient(135deg, rgba(47, 84, 150, 0.1) 0%, rgba(91, 155, 213, 0.1) 100%); padding: 12px; border-radius: 10px; margin: 18px 0; }
+        .pricing-best-for strong { display: block; color: #2F5496; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+        .pricing-best-for p { color: #555; font-size: 13px; line-height: 1.4; margin: 0; }
+        .pricing-cta { display: block; text-align: center; background: linear-gradient(135deg, #2F5496 0%, #5B9BD5 100%); color: white; padding: 13px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 15px; transition: all 0.3s ease; }
+        .pricing-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(47, 84, 150, 0.4); }
+        .featured .pricing-cta { background: linear-gradient(135deg, #28a745 0%, #20c997 100%); }
+        
+        .guarantee { background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); border-radius: 24px; padding: 50px 45px; border: 4px solid #28a745; margin: 50px auto; max-width: 900px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(40, 167, 69, 0.3); }
+        .guarantee-badge { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; padding: 10px 35px; border-radius: 30px; font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 5px 20px rgba(40, 167, 69, 0.4); }
+        .guarantee-icon { font-size: 60px; margin-bottom: 20px; margin-top: 15px; }
+        .guarantee h3 { font-size: 36px; font-weight: 800; color: #155724; margin-bottom: 22px; }
+        .guarantee p { font-size: 19px; color: #155724; line-height: 1.8; margin-bottom: 18px; }
+        .guarantee .subtext { font-size: 15px; font-style: italic; color: #155724; margin-top: 15px; }
+        
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 40px; }
+        .process-step { text-align: center; padding: 25px; }
+        .step-number { width: 60px; height: 60px; background: linear-gradient(135deg, #2F5496 0%, #5B9BD5 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 800; margin: 0 auto 20px; }
+        .process-step h3 { font-size: 20px; font-weight: 700; color: #1a1a1a; margin-bottom: 12px; }
+        .process-step p { color: #555; font-size: 15px; line-height: 1.7; }
+        
+        .faq-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .faq-item { background: #ffffff; border-radius: 12px; padding: 28px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06); border: 1px solid #f0f0f0; transition: all 0.3s ease; }
+        .faq-item:hover { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
+        .faq-item h4 { font-size: 18px; font-weight: 700; color: #2F5496; margin-bottom: 12px; }
+        .faq-item p { font-size: 15px; color: #555; line-height: 1.7; }
+        
+        .cta-section { background: linear-gradient(135deg, #1e3a5f 0%, #2F5496 100%); padding: 70px 20px; text-align: center; position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; top: -50%; right: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(91, 155, 213, 0.1) 0%, transparent 70%); animation: rotate 30s linear infinite; }
+        @keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .cta-content { position: relative; z-index: 2; }
+        .cta-section h2 { font-size: 44px; font-weight: 800; color: #ffffff; margin-bottom: 20px; }
+        .cta-section p { font-size: 20px; color: rgba(255, 255, 255, 0.9); margin-bottom: 35px; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .cta-button-large { display: inline-block; background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; padding: 20px 50px; font-size: 20px; font-weight: 700; text-decoration: none; border-radius: 12px; transition: all 0.3s ease; box-shadow: 0 10px 35px rgba(40, 167, 69, 0.4); margin: 0 10px 15px; }
+        .cta-button-large:hover { transform: translateY(-3px); box-shadow: 0 15px 45px rgba(40, 167, 69, 0.5); }
+        .cta-meta { margin-top: 20px; font-size: 16px; color: rgba(255, 255, 255, 0.7); }
+        .cta-meta a { color: #90EE90; text-decoration: none; font-weight: 600; }
+        .cta-meta a:hover { text-decoration: underline; }
+        
+        footer { background: #1a1a1a; color: #ffffff; padding: 50px 20px 30px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 30px; }
+        .footer-column h3 { font-size: 18px; font-weight: 700; margin-bottom: 15px; }
+        .footer-column p, .footer-column a { font-size: 15px; color: rgba(255, 255, 255, 0.8); text-decoration: none; display: block; margin-bottom: 8px; line-height: 1.6; }
+        .footer-column a:hover { color: #5B9BD5; }
+        .footer-social { display: flex; gap: 15px; margin-top: 10px; }
+        .footer-social a { display: inline-block; width: 40px; height: 40px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+        .footer-social a:hover { background: #0077b5; transform: translateY(-3px); }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .disclaimer { font-size: 13px; color: rgba(255, 255, 255, 0.5); font-style: italic; max-width: 800px; margin: 0 auto; line-height: 1.6; }
+        
+        @media (max-width: 1024px) { .pricing-grid { grid-template-columns: repeat(2, 1fr); } }
         
         @media (max-width: 768px) {
-            body {
-                padding-top: 70px;
-                padding-bottom: 60px;
-            }
+            body { padding-top: 70px; padding-bottom: 80px; }
+            .nav-container { padding: 15px 20px; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(30, 58, 95, 0.98); flex-direction: column; gap: 0; padding: 20px; }
+            .nav-links.mobile-active { display: flex !important; }
+            .nav-links li { width: 100%; text-align: center; padding: 15px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+            .mobile-menu-toggle { display: block; }
+            .sticky-mobile-cta { display: block; }
             
-            .nav-container {
-                padding: 15px 20px;
-            }
+            .roadmap-visual { gap: 2px; }
+            .roadmap-icon { font-size: 20px; }
+            .roadmap-label { font-size: 8px; }
+            .roadmap-arrow { font-size: 14px; margin: 0; }
+            .hero h1 { font-size: 32px; padding-bottom: 18px; }
+            .hero h1::after { width: 80px; height: 3px; }
+            .hero-subtitle { font-size: 16px; }
+            .section-title { font-size: 28px; }
+            section { padding: 30px 18px; }
             
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(30, 58, 95, 0.98);
-                flex-direction: column;
-                gap: 0;
-                padding: 20px;
-            }
+            #problem .card-grid { grid-template-columns: 1fr; gap: 12px; }
+            #problem .card { padding: 20px; cursor: pointer; }
+            #problem .card .card-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; margin-top: 0; }
+            #problem .card.expanded .card-content { max-height: 400px; margin-top: 15px; }
+            #problem .card h3::after { content: ' ▼'; font-size: 14px; color: #2F5496; }
+            #problem .card.expanded h3::after { content: ' ▲'; }
             
-            .nav-links.mobile-active {
-                display: flex !important;
-            }
+            .diff-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .diff-item { padding: 16px 12px; }
+            .diff-icon { font-size: 30px; margin-bottom: 8px; }
+            .diff-item h3 { font-size: 14px; margin-bottom: 6px; }
+            .diff-item p { font-size: 11px; line-height: 1.5; }
             
-            .nav-links li {
-                width: 100%;
-                text-align: center;
-                padding: 15px 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
+            .services-grid { grid-template-columns: 1fr; gap: 8px; }
+            .service-item { padding: 18px; cursor: pointer; }
+            .service-item h3 { font-size: 16px; margin-bottom: 0; padding-bottom: 0; border-bottom: none; justify-content: space-between; }
+            .service-item h3::after { content: '▼'; font-size: 12px; color: rgba(255,255,255,0.7); }
+            .service-item.expanded h3::after { content: '▲'; }
+            .service-item ul { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; margin-top: 0; }
+            .service-item.expanded ul { max-height: 300px; margin-top: 15px; padding-top: 15px; border-top: 2px solid rgba(255,255,255,0.2); }
+            .service-item li { font-size: 13px; padding: 5px 0; }
             
-            .mobile-menu-toggle {
-                display: block;
-            }
+            .success-card { padding: 22px; }
+            .success-card h3 { font-size: 18px; cursor: pointer; position: relative; padding-right: 30px; }
+            .success-card h3::after { content: '▼'; position: absolute; right: 0; font-size: 14px; }
+            .success-card.expanded h3::after { content: '▲'; }
+            .success-card ul { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; margin-top: 0; padding-top: 0; border-top: none; }
+            .success-card.expanded ul { max-height: 300px; margin-top: 15px; padding-top: 15px; border-top: 2px solid #2F5496; }
+            .success-card li { font-size: 13px; padding: 6px 0; }
             
-            .sticky-mobile-cta {
-                display: block;
-            }
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .pricing-card { padding: 18px 14px; }
+            .pricing-badge { top: 12px; right: -6px; padding: 6px 12px; font-size: 9px; }
+            .pricing-title { font-size: 15px; }
+            .pricing-price { font-size: 28px; }
+            .pricing-timeframe { font-size: 11px; }
+            .pricing-payment { font-size: 10px; }
+            .pricing-features { margin: 15px 0; }
+            .pricing-features li { font-size: 11px; padding: 5px 0; }
+            .pricing-features li:before { font-size: 14px; }
+            .pricing-best-for { padding: 8px; margin: 12px 0; }
+            .pricing-best-for strong { font-size: 10px; }
+            .pricing-best-for p { font-size: 10px; }
+            .pricing-cta { padding: 10px; font-size: 13px; }
             
-            .roadmap-visual {
-                gap: 3px;
-            }
+            .process-grid { grid-template-columns: 1fr; gap: 0; }
+            .process-step { padding: 18px; position: relative; text-align: left; display: flex; gap: 15px; align-items: flex-start; }
+            .process-step:not(:last-child)::after { content: ''; position: absolute; left: 40px; top: 75px; width: 2px; height: calc(100% - 55px); background: linear-gradient(180deg, #2F5496 0%, rgba(47, 84, 150, 0.3) 100%); }
+            .step-number { width: 45px; height: 45px; font-size: 22px; margin: 0; flex-shrink: 0; }
+            .process-step h3 { font-size: 16px; margin-bottom: 6px; text-align: left; }
+            .process-step p { font-size: 13px; line-height: 1.6; text-align: left; }
             
-            .roadmap-stage {
-                gap: 4px;
-            }
+            .faq-container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .faq-item { padding: 15px 12px; }
+            .faq-item h4 { font-size: 13px; margin-bottom: 6px; }
+            .faq-item p { font-size: 11px; line-height: 1.6; }
             
-            .roadmap-icon {
-                font-size: 22px;
-            }
-            
-            .roadmap-label {
-                font-size: 9px;
-            }
-            
-            .roadmap-arrow {
-                font-size: 16px;
-                margin: 0 1px;
-            }
-            
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero-subtitle {
-                font-size: 17px;
-            }
-            
-            .section-title {
-                font-size: 32px;
-            }
-            
-            section {
-                padding: 25px 15px;
-            }
-            
-            /* Mobile: Horizontal Scroll for "Is This You?" */
-            #problem .card-grid {
-                display: flex;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                gap: 15px;
-            }
-            
-            #problem .card-grid::-webkit-scrollbar {
-                display: none;
-            }
-            
-            #problem .card {
-                min-width: 280px;
-                flex-shrink: 0;
-                scroll-snap-align: start;
-                padding: 25px;
-            }
-            
-            /* Mobile: 2x2 Grid for Why Me */
-            .diff-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            
-            .diff-item {
-                padding: 18px 12px;
-            }
-            
-            .diff-icon {
-                font-size: 32px;
-                margin-bottom: 10px;
-            }
-            
-            .diff-item h3 {
-                font-size: 15px;
-                margin-bottom: 8px;
-            }
-            
-            .diff-item p {
-                font-size: 12px;
-                line-height: 1.5;
-            }
-            
-            /* Mobile: 2x3 Grid for Services */
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            
-            .service-item {
-                padding: 20px 15px;
-            }
-            
-            .service-item h3 {
-                font-size: 16px;
-                margin-bottom: 12px;
-                padding-bottom: 10px;
-                flex-direction: column;
-                gap: 6px;
-            }
-            
-            .service-icon {
-                font-size: 24px;
-            }
-            
-            .service-item li {
-                padding: 5px 0;
-                padding-left: 20px;
-                font-size: 13px;
-            }
-            
-            .service-item li:before {
-                left: 5px;
-                font-size: 16px;
-            }
-            
-            /* Mobile: Carousel for "What You'll Achieve" */
-            .carousel-container {
-                display: block;
-            }
-            
-            .carousel-track {
-                display: flex;
-            }
-            
-            .carousel-slide {
-                min-width: 100%;
-            }
-            
-            .carousel-slide .card {
-                padding: 25px;
-            }
-            
-            /* Mobile: 2x2 Grid for How It Works */
-            .process-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-            
-            .process-step {
-                padding: 15px 10px;
-            }
-            
-            .step-number {
-                width: 50px;
-                height: 50px;
-                font-size: 24px;
-                margin-bottom: 12px;
-            }
-            
-            .process-step h3 {
-                font-size: 16px;
-                margin-bottom: 8px;
-            }
-            
-            .process-step p {
-                font-size: 13px;
-                line-height: 1.5;
-            }
-            
-            /* Mobile: 2x4 Grid for FAQ */
-            .faq-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            
-            .faq-item {
-                padding: 18px 14px;
-            }
-            
-            .faq-item h4 {
-                font-size: 14px;
-                margin-bottom: 8px;
-            }
-            
-            .faq-item p {
-                font-size: 12px;
-                line-height: 1.6;
-            }
-            
-            /* Mobile: Pricing stays 2x2 */
-            .pricing-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            
-            .pricing-card {
-                padding: 20px 15px;
-            }
-            
-            .pricing-price {
-                font-size: 32px;
-            }
-            
-            .pricing-title {
-                font-size: 16px;
-            }
-            
-            .pricing-features li {
-                font-size: 12px;
-                padding: 6px 0;
-            }
-            
-            .pricing-best-for {
-                padding: 10px;
-                margin: 12px 0;
-            }
-            
-            .pricing-best-for strong {
-                font-size: 11px;
-            }
-            
-            .pricing-best-for p {
-                font-size: 11px;
-            }
-            
-            .guarantee {
-                padding: 35px 18px;
-                margin-top: 30px;
-            }
-            
-            .guarantee-badge {
-                top: -14px;
-                padding: 8px 22px;
-                font-size: 13px;
-            }
-            
-            .guarantee-icon {
-                margin-top: 18px;
-                font-size: 50px;
-            }
-            
-            .guarantee h3 {
-                font-size: 28px;
-            }
-            
-            .guarantee p {
-                font-size: 16px;
-            }
-            
-            .cta-section h2 {
-                font-size: 32px;
-            }
+            .guarantee { padding: 30px 18px; margin-top: 25px; }
+            .guarantee-badge { top: -12px; padding: 7px 20px; font-size: 12px; }
+            .guarantee-icon { margin-top: 15px; font-size: 45px; }
+            .guarantee h3 { font-size: 24px; }
+            .guarantee p { font-size: 15px; }
+            .cta-section h2 { font-size: 28px; }
+            .cta-section p { font-size: 16px; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="#hero" class="nav-logo">Financial Coaching by Oreste Simi</a>
@@ -1367,12 +256,10 @@
         </div>
     </nav>
 
-    <!-- Sticky Mobile CTA -->
     <div class="sticky-mobile-cta">
-        <a href="https://forms.gle/1DArSLngrPk4Dt8M6">Get Started Today</a>
+        <a href="https://forms.gle/1DArSLngrPk4Dt8M6">Get Started Today →</a>
     </div>
 
-    <!-- Hero Section -->
     <div class="hero" id="hero">
         <div class="hero-content">
             <div class="roadmap-visual">
@@ -1409,7 +296,6 @@
         </div>
     </div>
 
-    <!-- Problem Section -->
     <section id="problem">
         <div class="container">
             <div class="section-header">
@@ -1421,37 +307,42 @@
                 <div class="card problem-card">
                     <span class="card-icon">💸</span>
                     <h3>You're Leaving Money on the Table</h3>
-                    <ul>
-                        <li>You're not maximizing credit card rewards, tax deductions, or employer benefits</li>
-                        <li>You know you should be earning more but don't know how to negotiate a raise</li>
-                        <li>Money comes in and goes out, but you're not sure where it's all going</li>
-                    </ul>
+                    <div class="card-content">
+                        <ul>
+                            <li>You're not maximizing credit card rewards, tax deductions, or employer benefits</li>
+                            <li>You know you should be earning more but don't know how to negotiate a raise</li>
+                            <li>Money comes in and goes out, but you're not sure where it's all going</li>
+                        </ul>
+                    </div>
                 </div>
                 
                 <div class="card problem-card">
                     <span class="card-icon">⚖️</span>
                     <h3>You Need Both Defense and Offense</h3>
-                    <ul>
-                        <li>You either have no emergency fund or too much cash sitting idle</li>
-                        <li>You want to invest and grow wealth but don't have a clear strategy</li>
-                        <li>You're playing defense (saving) but not offense (investing and earning more)</li>
-                    </ul>
+                    <div class="card-content">
+                        <ul>
+                            <li>You either have no emergency fund or too much cash sitting idle</li>
+                            <li>You want to invest and grow wealth but don't have a clear strategy</li>
+                            <li>You're playing defense (saving) but not offense (investing and earning more)</li>
+                        </ul>
+                    </div>
                 </div>
                 
                 <div class="card problem-card">
                     <span class="card-icon">🏡</span>
                     <h3>You're Facing a Major Financial Decision</h3>
-                    <ul>
-                        <li>Getting married, having kids, or buying a home and need to plan properly</li>
-                        <li>Starting a business or side hustle and don't know how to structure it financially</li>
-                        <li>You're making a big life change and want to make smart money moves</li>
-                    </ul>
+                    <div class="card-content">
+                        <ul>
+                            <li>Getting married, having kids, or buying a home and need to plan properly</li>
+                            <li>Starting a business or side hustle and don't know how to structure it financially</li>
+                            <li>You're making a big life change and want to make smart money moves</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Me Section (MOVED UP) -->
     <section id="why-me" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
         <div class="container">
             <div class="section-header">
@@ -1487,7 +378,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services">
         <div class="container">
             <div class="section-header">
@@ -1497,7 +387,7 @@
             
             <div class="services-grid">
                 <div class="service-item">
-                    <h3><span class="service-icon">💰</span> Money Fundamentals & Cash Flow Optimization</h3>
+                    <h3><span class="service-icon">💰</span> <span>Money Fundamentals & Cash Flow Optimization</span></h3>
                     <ul>
                         <li>Smart budgeting that actually works for your life</li>
                         <li>Emergency fund strategy (how much, where to keep it)</li>
@@ -1507,7 +397,7 @@
                 </div>
                 
                 <div class="service-item">
-                    <h3><span class="service-icon">📈</span> Wealth Building & Investment Strategy</h3>
+                    <h3><span class="service-icon">📈</span> <span>Wealth Building & Investment Strategy</span></h3>
                     <ul>
                         <li>Offensive strategies: grow your money through investing</li>
                         <li>Portfolio construction and asset allocation</li>
@@ -1516,7 +406,7 @@
                 </div>
                 
                 <div class="service-item">
-                    <h3><span class="service-icon">💼</span> Earn More & Career Optimization</h3>
+                    <h3><span class="service-icon">💼</span> <span>Earn More & Career Optimization</span></h3>
                     <ul>
                         <li>Salary negotiation and asking for raises</li>
                         <li>Side income and entrepreneurial ventures</li>
@@ -1525,7 +415,7 @@
                 </div>
                 
                 <div class="service-item">
-                    <h3><span class="service-icon">🧾</span> Tax Strategy & Optimization</h3>
+                    <h3><span class="service-icon">🧾</span> <span>Tax Strategy & Optimization</span></h3>
                     <ul>
                         <li>Maximize deductions and credits you're missing</li>
                         <li>Tax efficient investing (tax loss harvesting, Roth conversions)</li>
@@ -1535,7 +425,7 @@
                 </div>
                 
                 <div class="service-item">
-                    <h3><span class="service-icon">🏠</span> Life Transitions & Major Decisions</h3>
+                    <h3><span class="service-icon">🏠</span> <span>Life Transitions & Major Decisions</span></h3>
                     <ul>
                         <li>Having children: financial preparation</li>
                         <li>Buying vs renting, mortgage decisions</li>
@@ -1544,7 +434,7 @@
                 </div>
                 
                 <div class="service-item">
-                    <h3><span class="service-icon">💡</span> Small Business & Entrepreneurship</h3>
+                    <h3><span class="service-icon">💡</span> <span>Small Business & Entrepreneurship</span></h3>
                     <ul>
                         <li>Starting a business: structure and setup</li>
                         <li>Separating business and personal finances</li>
@@ -1555,7 +445,6 @@
         </div>
     </section>
 
-    <!-- What You'll Achieve Section -->
     <section style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
         <div class="container">
             <div class="section-header">
@@ -1563,45 +452,37 @@
                 <h2 class="section-title">What You'll Achieve</h2>
             </div>
             
-            <div class="carousel-container">
-                <div class="carousel-track" id="carouselTrack">
-                    <div class="carousel-slide">
-                        <div class="card success-card">
-                            <h3>Month 1: Foundation & Automation</h3>
-                            <ul>
-                                <li>Emergency fund automated (money moves itself every paycheck)</li>
-                                <li>Debt payoff on autopilot (no willpower needed)</li>
-                                <li>Budget clarity (you know where every dollar goes)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <div class="card success-card">
-                            <h3>Month 2: Wealth Building Systems</h3>
-                            <ul>
-                                <li>Investment accounts automated (contribution never gets skipped)</li>
-                                <li>Tax optimization strategies implemented</li>
-                                <li>Retirement contributions maxed automatically</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <div class="card success-card">
-                            <h3>Month 3: Independence</h3>
-                            <ul>
-                                <li>Complete wealth roadmap in your hands</li>
-                                <li>Systems running 24/7 (your money works while you sleep)</li>
-                                <li>The skills to adjust your automation as life changes</li>
-                            </ul>
-                        </div>
-                    </div>
+            <div class="card-grid">
+                <div class="card success-card">
+                    <h3>Month 1: Foundation & Automation</h3>
+                    <ul>
+                        <li>Emergency fund automated (money moves itself every paycheck)</li>
+                        <li>Debt payoff on autopilot (no willpower needed)</li>
+                        <li>Budget clarity (you know where every dollar goes)</li>
+                    </ul>
                 </div>
-                <div class="carousel-dots" id="carouselDots"></div>
+                
+                <div class="card success-card">
+                    <h3>Month 2: Wealth Building Systems</h3>
+                    <ul>
+                        <li>Investment accounts automated (contribution never gets skipped)</li>
+                        <li>Tax optimization strategies implemented</li>
+                        <li>Retirement contributions maxed automatically</li>
+                    </ul>
+                </div>
+                
+                <div class="card success-card">
+                    <h3>Month 3: Independence</h3>
+                    <ul>
+                        <li>Complete wealth roadmap in your hands</li>
+                        <li>Systems running 24/7 (your money works while you sleep)</li>
+                        <li>The skills to adjust your automation as life changes</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
     <section id="pricing">
         <div class="container">
             <div class="section-header">
@@ -1611,7 +492,6 @@
             </div>
             
             <div class="pricing-grid">
-                <!-- Single Session -->
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <h3 class="pricing-title">Single Session</h3>
@@ -1626,7 +506,6 @@
                     <a href="https://forms.gle/1DArSLngrPk4Dt8M6" class="pricing-cta">Book Single Session</a>
                 </div>
                 
-                <!-- Starter Package -->
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <h3 class="pricing-title">Starter Package</h3>
@@ -1647,7 +526,6 @@
                     <a href="https://forms.gle/1DArSLngrPk4Dt8M6" class="pricing-cta">Get Started</a>
                 </div>
                 
-                <!-- Foundations Package -->
                 <div class="pricing-card featured">
                     <span class="pricing-badge">⭐ Most Popular</span>
                     <div class="pricing-header">
@@ -1672,7 +550,6 @@
                     <a href="https://forms.gle/1DArSLngrPk4Dt8M6" class="pricing-cta">Get Started</a>
                 </div>
                 
-                <!-- Executive Package -->
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <h3 class="pricing-title">Executive Package</h3>
@@ -1700,7 +577,6 @@
         </div>
     </section>
 
-    <!-- Guarantee Section -->
     <section id="guarantee">
         <div class="container">
             <div class="guarantee">
@@ -1714,7 +590,6 @@
         </div>
     </section>
 
-    <!-- How It Works -->
     <section id="how-it-works" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
         <div class="container">
             <div class="section-header">
@@ -1725,32 +600,39 @@
             <div class="process-grid">
                 <div class="process-step">
                     <div class="step-number">1</div>
-                    <h3>Complete Intake Form</h3>
-                    <p>This helps me understand your unique situation and goals so we can focus our time together on what matters most to you.</p>
+                    <div>
+                        <h3>Complete Intake Form</h3>
+                        <p>This helps me understand your unique situation and goals so we can focus our time together on what matters most to you.</p>
+                    </div>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-number">2</div>
-                    <h3>Free Consultation</h3>
-                    <p>Book a free 20 minute call. We'll discuss your situation, goals, and whether coaching is the right fit.</p>
+                    <div>
+                        <h3>Free Consultation</h3>
+                        <p>Book a free 20 minute call. We'll discuss your situation, goals, and whether coaching is the right fit.</p>
+                    </div>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-number">3</div>
-                    <h3>Choose Your Package</h3>
-                    <p>Select the package that matches your needs.</p>
+                    <div>
+                        <h3>Choose Your Package</h3>
+                        <p>Select the package that matches your needs.</p>
+                    </div>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-number">4</div>
-                    <h3>Start Building Wealth</h3>
-                    <p>Weekly sessions, ongoing support, and the financial education to make confident decisions for life.</p>
+                    <div>
+                        <h3>Start Building Wealth</h3>
+                        <p>Weekly sessions, ongoing support, and the financial education to make confident decisions for life.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
     <section id="faq">
         <div class="container">
             <div class="section-header">
@@ -1802,7 +684,6 @@
         </div>
     </section>
 
-    <!-- Final CTA -->
     <section class="cta-section">
         <div class="cta-content">
             <h2>Ready to Master Your Money?</h2>
@@ -1815,7 +696,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
@@ -1854,7 +734,6 @@
     
     <script>
         (function() {
-            // Mobile menu toggle
             var toggle = document.getElementById('mobileMenuToggle');
             var nav = document.getElementById('navLinks');
             
@@ -1880,66 +759,26 @@
                 }
             }
             
-            // Carousel functionality (mobile only)
             if (window.innerWidth <= 768) {
-                var track = document.getElementById('carouselTrack');
-                var dotsContainer = document.getElementById('carouselDots');
-                var slides = track.querySelectorAll('.carousel-slide');
-                var currentSlide = 0;
-                
-                // Create dots
-                for (var i = 0; i < slides.length; i++) {
-                    var dot = document.createElement('button');
-                    dot.className = 'carousel-dot';
-                    if (i === 0) dot.classList.add('active');
-                    dot.setAttribute('data-index', i);
-                    dotsContainer.appendChild(dot);
-                }
-                
-                var dots = dotsContainer.querySelectorAll('.carousel-dot');
-                
-                function goToSlide(index) {
-                    currentSlide = index;
-                    track.style.transform = 'translateX(-' + (index * 100) + '%)';
-                    
-                    dots.forEach(function(dot, i) {
-                        if (i === index) {
-                            dot.classList.add('active');
-                        } else {
-                            dot.classList.remove('active');
-                        }
-                    });
-                }
-                
-                // Dot click handlers
-                dots.forEach(function(dot) {
-                    dot.addEventListener('click', function() {
-                        goToSlide(parseInt(this.getAttribute('data-index')));
+                var problemCards = document.querySelectorAll('#problem .card');
+                problemCards.forEach(function(card) {
+                    card.addEventListener('click', function() {
+                        this.classList.toggle('expanded');
                     });
                 });
                 
-                // Touch swipe support
-                var startX = 0;
-                var currentX = 0;
-                
-                track.addEventListener('touchstart', function(e) {
-                    startX = e.touches[0].clientX;
+                var serviceItems = document.querySelectorAll('.service-item');
+                serviceItems.forEach(function(item) {
+                    item.addEventListener('click', function() {
+                        this.classList.toggle('expanded');
+                    });
                 });
                 
-                track.addEventListener('touchmove', function(e) {
-                    currentX = e.touches[0].clientX;
-                });
-                
-                track.addEventListener('touchend', function() {
-                    var diff = startX - currentX;
-                    
-                    if (Math.abs(diff) > 50) {
-                        if (diff > 0 && currentSlide < slides.length - 1) {
-                            goToSlide(currentSlide + 1);
-                        } else if (diff < 0 && currentSlide > 0) {
-                            goToSlide(currentSlide - 1);
-                        }
-                    }
+                var successCards = document.querySelectorAll('.success-card');
+                successCards.forEach(function(card) {
+                    card.addEventListener('click', function() {
+                        this.classList.toggle('expanded');
+                    });
                 });
             }
         })();
