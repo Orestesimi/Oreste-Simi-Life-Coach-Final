@@ -101,6 +101,27 @@
             padding: 5px 10px;
         }
         
+        /* Sticky Mobile CTA */
+        .sticky-mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            padding: 12px 20px;
+            text-align: center;
+            z-index: 999;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sticky-mobile-cta a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #1e3a5f 0%, #2F5496 50%, #1e3a5f 100%);
@@ -229,6 +250,7 @@
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 20px;
         }
         
         .hero-cta {
@@ -258,6 +280,13 @@
         .hero-cta-secondary:hover {
             background: rgba(255, 255, 255, 0.25);
             box-shadow: 0 10px 35px rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero-urgency {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.75);
+            font-weight: 600;
+            margin-top: 10px;
         }
         
         /* Container & Sections */
@@ -478,6 +507,13 @@
             margin-bottom: 18px;
             padding-bottom: 15px;
             border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .service-icon {
+            font-size: 28px;
         }
         
         .service-item ul {
@@ -572,6 +608,14 @@
             font-size: 13px;
             color: #666;
             font-weight: 500;
+        }
+        
+        .pricing-payment {
+            font-size: 12px;
+            color: #28a745;
+            font-weight: 600;
+            margin-top: 8px;
+            font-style: italic;
         }
         
         .pricing-savings {
@@ -724,14 +768,14 @@
         /* Process Steps */
         .process-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
             margin-top: 40px;
         }
         
         .process-step {
             text-align: center;
-            padding: 30px;
+            padding: 25px;
         }
         
         .step-number {
@@ -749,7 +793,7 @@
         }
         
         .process-step h3 {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
             color: #1a1a1a;
             margin-bottom: 12px;
@@ -757,7 +801,7 @@
         
         .process-step p {
             color: #555;
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.7;
         }
         
@@ -913,6 +957,29 @@
             color: #5B9BD5;
         }
         
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .footer-social a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background: #0077b5;
+            transform: translateY(-3px);
+        }
+        
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
@@ -946,6 +1013,7 @@
         @media (max-width: 768px) {
             body {
                 padding-top: 70px;
+                padding-bottom: 60px;
             }
             
             .nav-container {
@@ -979,25 +1047,33 @@
                 display: block;
             }
             
+            .sticky-mobile-cta {
+                display: block;
+            }
+            
             .roadmap-visual {
-                flex-wrap: wrap;
-                gap: 6px;
+                gap: 4px;
+            }
+            
+            .roadmap-stage {
+                gap: 4px;
             }
             
             .roadmap-icon {
-                font-size: 28px;
-            }
-            
-            .roadmap-label {
-                font-size: 11px;
-            }
-            
-            .roadmap-arrow {
                 font-size: 24px;
             }
             
+            .roadmap-label {
+                font-size: 9px;
+            }
+            
+            .roadmap-arrow {
+                font-size: 18px;
+                margin: 0 2px;
+            }
+            
             .hero h1 {
-                font-size: 38px;
+                font-size: 36px;
             }
             
             .hero-subtitle {
@@ -1018,11 +1094,26 @@
             }
             
             section {
-                padding: 35px 20px;
+                padding: 30px 15px;
+            }
+            
+            .card {
+                padding: 25px;
             }
             
             .guarantee {
-                padding: 35px 20px;
+                padding: 40px 20px;
+                margin-top: 40px;
+            }
+            
+            .guarantee-badge {
+                top: -14px;
+                padding: 8px 25px;
+                font-size: 13px;
+            }
+            
+            .guarantee-icon {
+                margin-top: 20px;
             }
             
             .pricing-price {
@@ -1041,16 +1132,21 @@
         <div class="nav-container">
             <a href="#hero" class="nav-logo">Financial Coaching by Oreste Simi</a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#why-me">Why Me</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#why-me">Why Me</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="https://forms.gle/1DArSLngrPk4Dt8M6" class="nav-cta">Get Started</a></li>
             </ul>
             <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
         </div>
     </nav>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-mobile-cta">
+        <a href="https://forms.gle/1DArSLngrPk4Dt8M6">Get Started Today</a>
+    </div>
 
     <!-- Hero Section -->
     <div class="hero" id="hero">
@@ -1085,6 +1181,7 @@
                 <a href="#pricing" class="hero-cta">Explore Coaching Packages</a>
                 <a href="https://forms.gle/1DArSLngrPk4Dt8M6" class="hero-cta hero-cta-secondary">Book Free 20-Min Consultation</a>
             </div>
+            <p class="hero-urgency">⚡ Limited availability: Only taking 5 new clients this month</p>
         </div>
     </div>
 
@@ -1146,15 +1243,15 @@
                 </div>
                 
                 <div class="diff-item">
-                    <span class="diff-icon">🎯</span>
-                    <h3>Customized, Not Cookie Cutter</h3>
-                    <p>Your financial plan is built for YOUR goals, YOUR risk tolerance, YOUR life stage. No generic templates, just strategies that actually work for you.</p>
-                </div>
-                
-                <div class="diff-item">
                     <span class="diff-icon">🤖</span>
                     <h3>Automation Implementation</h3>
                     <p>I don't just create a plan and wish you luck. I reverse engineer your goals, then build automated systems that execute the plan for you. Your wealth grows while you focus on life.</p>
+                </div>
+                
+                <div class="diff-item">
+                    <span class="diff-icon">🎯</span>
+                    <h3>Customized, Not Cookie Cutter</h3>
+                    <p>Your financial plan is built for YOUR goals, YOUR risk tolerance, YOUR life stage. No generic templates, just strategies that actually work for you.</p>
                 </div>
                 
                 <div class="diff-item">
@@ -1176,7 +1273,7 @@
             
             <div class="services-grid">
                 <div class="service-item">
-                    <h3>Money Fundamentals & Cash Flow Optimization</h3>
+                    <h3><span class="service-icon">💰</span> Money Fundamentals & Cash Flow Optimization</h3>
                     <ul>
                         <li>Smart budgeting that actually works for your life</li>
                         <li>Emergency fund strategy (how much, where to keep it)</li>
@@ -1186,7 +1283,7 @@
                 </div>
                 
                 <div class="service-item">
-                    <h3>Wealth Building & Investment Strategy</h3>
+                    <h3><span class="service-icon">📈</span> Wealth Building & Investment Strategy</h3>
                     <ul>
                         <li>Offensive strategies: grow your money through investing</li>
                         <li>Portfolio construction and asset allocation</li>
@@ -1195,7 +1292,7 @@
                 </div>
                 
                 <div class="service-item">
-                    <h3>Earn More & Career Optimization</h3>
+                    <h3><span class="service-icon">💼</span> Earn More & Career Optimization</h3>
                     <ul>
                         <li>Salary negotiation and asking for raises</li>
                         <li>Side income and entrepreneurial ventures</li>
@@ -1204,7 +1301,7 @@
                 </div>
                 
                 <div class="service-item">
-                    <h3>Tax Strategy & Optimization</h3>
+                    <h3><span class="service-icon">🧾</span> Tax Strategy & Optimization</h3>
                     <ul>
                         <li>Maximize deductions and credits you're missing</li>
                         <li>Tax efficient investing (tax loss harvesting, Roth conversions)</li>
@@ -1214,7 +1311,7 @@
                 </div>
                 
                 <div class="service-item">
-                    <h3>Life Transitions & Major Decisions</h3>
+                    <h3><span class="service-icon">🏠</span> Life Transitions & Major Decisions</h3>
                     <ul>
                         <li>Having children: financial preparation</li>
                         <li>Buying vs renting, mortgage decisions</li>
@@ -1223,7 +1320,7 @@
                 </div>
                 
                 <div class="service-item">
-                    <h3>Small Business & Entrepreneurship</h3>
+                    <h3><span class="service-icon">💡</span> Small Business & Entrepreneurship</h3>
                     <ul>
                         <li>Starting a business: structure and setup</li>
                         <li>Separating business and personal finances</li>
@@ -1289,6 +1386,7 @@
                         <h3 class="pricing-title">Single Session</h3>
                         <div class="pricing-price">$250</div>
                         <p class="pricing-timeframe">One 60 minute session</p>
+                        <p class="pricing-payment">Payment plans available</p>
                     </div>
                     <ul class="pricing-features">
                         <li>One focused coaching session</li>
@@ -1305,6 +1403,7 @@
                         <div class="pricing-price">$600</div>
                         <p class="pricing-timeframe">3 weekly sessions (3 weeks)</p>
                         <span class="pricing-savings">Save $150</span>
+                        <p class="pricing-payment">Payment plans available</p>
                     </div>
                     <ul class="pricing-features">
                         <li>3 weekly one on one sessions</li>
@@ -1327,6 +1426,7 @@
                         <div class="pricing-price">$1,200</div>
                         <p class="pricing-timeframe">6 weekly sessions (6 weeks)</p>
                         <span class="pricing-savings">Save $300</span>
+                        <p class="pricing-payment">Payment plans available</p>
                     </div>
                     <ul class="pricing-features">
                         <li>6 weekly one on one sessions</li>
@@ -1350,6 +1450,7 @@
                         <div class="pricing-price">$2,200</div>
                         <p class="pricing-timeframe">12 weekly sessions (3 months)</p>
                         <span class="pricing-savings">Save $800</span>
+                        <p class="pricing-payment">Payment plans available</p>
                     </div>
                     <ul class="pricing-features">
                         <li>12 weekly one on one sessions</li>
@@ -1395,18 +1496,24 @@
             <div class="process-grid">
                 <div class="process-step">
                     <div class="step-number">1</div>
+                    <h3>Complete Intake Form</h3>
+                    <p>This helps me understand your unique situation and goals so we can focus our time together on what matters most to you.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
                     <h3>Free Consultation</h3>
                     <p>Book a free 20 minute call. We'll discuss your situation, goals, and whether coaching is the right fit.</p>
                 </div>
                 
                 <div class="process-step">
-                    <div class="step-number">2</div>
+                    <div class="step-number">3</div>
                     <h3>Choose Your Package</h3>
-                    <p>Select the package that matches your needs. Complete the intake form so I can prepare a personalized plan.</p>
+                    <p>Select the package that matches your needs.</p>
                 </div>
                 
                 <div class="process-step">
-                    <div class="step-number">3</div>
+                    <div class="step-number">4</div>
                     <h3>Start Building Wealth</h3>
                     <p>Weekly sessions, ongoing support, and the financial education to make confident decisions for life.</p>
                 </div>
@@ -1460,7 +1567,7 @@
                 
                 <div class="faq-item">
                     <h4>What if I'm not sure which package is right for me?</h4>
-                    <p>Book a free 20 minute consultation. We'll discuss your situation and I'll honestly tell you which package makes the most sense, or if coaching isn't the right fit for you at all. No pressure, just real conversation.</p>
+                    <p>Book a free 20 minute consultation. We'll discuss your situation and I'll assess which package makes the most sense, or if coaching isn't the right fit for you at all. No pressure, just real conversation.</p>
                 </div>
             </div>
         </div>
@@ -1486,13 +1593,21 @@
                 <h3>Oreste Simi</h3>
                 <p>Financial Coach</p>
                 <p><a href="mailto:orestesimi@convoscout.com">orestesimi@convoscout.com</a></p>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/oreste-simi" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
             
             <div class="footer-column">
                 <h3>Quick Links</h3>
-                <a href="#how-it-works">How It Works</a>
+                <a href="#why-me">Why Me</a>
                 <a href="#services">Services</a>
                 <a href="#pricing">Pricing</a>
+                <a href="#how-it-works">How It Works</a>
                 <a href="#faq">FAQ</a>
             </div>
             
