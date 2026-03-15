@@ -72,7 +72,7 @@
         .success-card li:before { content: "✓"; color: #2F5496; }
         
         .diff-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; }
-        .diff-item { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 16px; padding: 30px 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid #dee2e6; transition: all 0.3s ease; text-align: center; }
+        .diff-item { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 16px; padding: 30px 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 2px solid #2F5496; transition: all 0.3s ease; text-align: center; }
         .diff-item:hover { transform: translateY(-5px); box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12); }
         .diff-icon { font-size: 40px; margin-bottom: 15px; display: block; }
         .diff-item h3 { font-size: 18px; font-weight: 700; color: #2F5496; margin-bottom: 12px; }
@@ -85,7 +85,7 @@
         .service-icon { font-size: 28px; }
         .service-item ul { list-style: none; padding: 0; }
         .service-item li { padding: 8px 0; color: rgba(255, 255, 255, 0.9); font-size: 15px; line-height: 1.6; display: flex; align-items: flex-start; gap: 8px; }
-        .service-item li:before { content: "•"; color: #90EE90; font-weight: bold; font-size: 20px; flex-shrink: 0; line-height: 1.6; }
+        .service-item li:before { content: "•"; color: #90EE90; font-weight: bold; font-size: 20px; flex-shrink: 0; line-height: 1; margin-top: 2px; }
         
         .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; }
         .pricing-card { background: #ffffff; border-radius: 20px; padding: 35px 25px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 2px solid #f0f0f0; transition: all 0.3s ease; position: relative; }
@@ -110,12 +110,12 @@
         .pricing-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(47, 84, 150, 0.4); }
         .featured .pricing-cta { background: linear-gradient(135deg, #28a745 0%, #20c997 100%); }
         
-        .guarantee { background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); border-radius: 24px; padding: 50px 45px; border: 4px solid #28a745; margin: 50px auto; max-width: 900px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(40, 167, 69, 0.3); }
+        .guarantee { background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%); border-radius: 24px; padding: 35px 30px; border: 4px solid #28a745; margin: 50px auto; max-width: 900px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(40, 167, 69, 0.3); }
         .guarantee-badge { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; padding: 10px 35px; border-radius: 30px; font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 5px 20px rgba(40, 167, 69, 0.4); }
-        .guarantee-icon { font-size: 60px; margin-bottom: 20px; margin-top: 15px; }
-        .guarantee h3 { font-size: 36px; font-weight: 800; color: #155724; margin-bottom: 22px; }
-        .guarantee p { font-size: 19px; color: #155724; line-height: 1.8; margin-bottom: 18px; }
-        .guarantee .subtext { font-size: 15px; font-style: italic; color: #155724; margin-top: 15px; }
+        .guarantee-icon { font-size: 50px; margin-bottom: 15px; margin-top: 12px; }
+        .guarantee h3 { font-size: 32px; font-weight: 800; color: #155724; margin-bottom: 15px; line-height: 1.2; }
+        .guarantee p { font-size: 17px; color: #155724; line-height: 1.6; margin-bottom: 12px; }
+        .guarantee .subtext { font-size: 14px; font-style: italic; color: #155724; margin-top: 10px; }
         
         .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 40px; }
         .process-step { text-align: center; padding: 25px; }
@@ -124,7 +124,7 @@
         .process-step p { color: #555; font-size: 15px; line-height: 1.7; }
         
         .faq-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-        .faq-item { background: #ffffff; border-radius: 12px; padding: 28px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06); border: 1px solid #f0f0f0; transition: all 0.3s ease; }
+        .faq-item { background: #ffffff; border-radius: 12px; padding: 28px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06); border: 1px solid #dee2e6; transition: all 0.3s ease; }
         .faq-item:hover { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
         .faq-item h4 { font-size: 18px; font-weight: 700; color: #2F5496; margin-bottom: 12px; }
         .faq-item p { font-size: 15px; color: #555; line-height: 1.7; }
@@ -174,14 +174,13 @@
             section { padding: 30px 18px; }
             
             #problem .card-grid { grid-template-columns: 1fr; gap: 12px; }
-            #problem .card { padding: 20px; cursor: pointer; }
-            #problem .card .card-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; margin-top: 0; }
-            #problem .card.expanded .card-content { max-height: 400px; margin-top: 15px; }
-            #problem .card h3::after { content: ' ▼'; font-size: 14px; color: #2F5496; }
-            #problem .card.expanded h3::after { content: ' ▲'; }
+            #problem .card { padding: 22px; }
+            #problem .card-icon { font-size: 40px; margin-bottom: 12px; }
+            #problem .card h3 { font-size: 18px; margin-bottom: 12px; }
+            #problem .card li { padding: 7px 0; font-size: 14px; }
             
             .diff-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .diff-item { padding: 16px 12px; }
+            .diff-item { padding: 16px 12px; border: 2px solid #2F5496; }
             .diff-icon { font-size: 30px; margin-bottom: 8px; }
             .diff-item h3 { font-size: 14px; margin-bottom: 6px; }
             .diff-item p { font-size: 11px; line-height: 1.5; }
@@ -196,11 +195,7 @@
             .service-item li { font-size: 13px; padding: 5px 0; }
             
             .success-card { padding: 22px; }
-            .success-card h3 { font-size: 18px; cursor: pointer; position: relative; padding-right: 30px; }
-            .success-card h3::after { content: '▼'; position: absolute; right: 0; font-size: 14px; }
-            .success-card.expanded h3::after { content: '▲'; }
-            .success-card ul { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; margin-top: 0; padding-top: 0; border-top: none; }
-            .success-card.expanded ul { max-height: 300px; margin-top: 15px; padding-top: 15px; border-top: 2px solid #2F5496; }
+            .success-card h3 { font-size: 18px; margin-bottom: 12px; padding-bottom: 12px; }
             .success-card li { font-size: 13px; padding: 6px 0; }
             
             .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
@@ -226,15 +221,16 @@
             .process-step p { font-size: 13px; line-height: 1.6; text-align: left; }
             
             .faq-container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .faq-item { padding: 15px 12px; }
+            .faq-item { padding: 15px 12px; border: 1px solid #dee2e6; }
             .faq-item h4 { font-size: 13px; margin-bottom: 6px; }
             .faq-item p { font-size: 11px; line-height: 1.6; }
             
-            .guarantee { padding: 30px 18px; margin-top: 25px; }
+            .guarantee { padding: 28px 20px; margin-top: 25px; }
             .guarantee-badge { top: -12px; padding: 7px 20px; font-size: 12px; }
-            .guarantee-icon { margin-top: 15px; font-size: 45px; }
-            .guarantee h3 { font-size: 24px; }
-            .guarantee p { font-size: 15px; }
+            .guarantee-icon { margin-top: 12px; font-size: 40px; margin-bottom: 12px; }
+            .guarantee h3 { font-size: 24px; margin-bottom: 12px; }
+            .guarantee p { font-size: 15px; margin-bottom: 10px; }
+            .guarantee .subtext { font-size: 13px; }
             .cta-section h2 { font-size: 28px; }
             .cta-section p { font-size: 16px; }
         }
@@ -307,37 +303,31 @@
                 <div class="card problem-card">
                     <span class="card-icon">💸</span>
                     <h3>You're Leaving Money on the Table</h3>
-                    <div class="card-content">
-                        <ul>
-                            <li>You're not maximizing credit card rewards, tax deductions, or employer benefits</li>
-                            <li>You know you should be earning more but don't know how to negotiate a raise</li>
-                            <li>Money comes in and goes out, but you're not sure where it's all going</li>
-                        </ul>
-                    </div>
+                    <ul>
+                        <li>You're not maximizing credit card rewards, tax deductions, or employer benefits</li>
+                        <li>You know you should be earning more but don't know how to negotiate a raise</li>
+                        <li>Money comes in and goes out, but you're not sure where it's all going</li>
+                    </ul>
                 </div>
                 
                 <div class="card problem-card">
                     <span class="card-icon">⚖️</span>
                     <h3>You Need Both Defense and Offense</h3>
-                    <div class="card-content">
-                        <ul>
-                            <li>You either have no emergency fund or too much cash sitting idle</li>
-                            <li>You want to invest and grow wealth but don't have a clear strategy</li>
-                            <li>You're playing defense (saving) but not offense (investing and earning more)</li>
-                        </ul>
-                    </div>
+                    <ul>
+                        <li>You either have no emergency fund or too much cash sitting idle</li>
+                        <li>You want to invest and grow wealth but don't have a clear strategy</li>
+                        <li>You're playing defense (saving) but not offense (investing and earning more)</li>
+                    </ul>
                 </div>
                 
                 <div class="card problem-card">
                     <span class="card-icon">🏡</span>
                     <h3>You're Facing a Major Financial Decision</h3>
-                    <div class="card-content">
-                        <ul>
-                            <li>Getting married, having kids, or buying a home and need to plan properly</li>
-                            <li>Starting a business or side hustle and don't know how to structure it financially</li>
-                            <li>You're making a big life change and want to make smart money moves</li>
-                        </ul>
-                    </div>
+                    <ul>
+                        <li>Getting married, having kids, or buying a home and need to plan properly</li>
+                        <li>Starting a business or side hustle and don't know how to structure it financially</li>
+                        <li>You're making a big life change and want to make smart money moves</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -760,23 +750,9 @@
             }
             
             if (window.innerWidth <= 768) {
-                var problemCards = document.querySelectorAll('#problem .card');
-                problemCards.forEach(function(card) {
-                    card.addEventListener('click', function() {
-                        this.classList.toggle('expanded');
-                    });
-                });
-                
                 var serviceItems = document.querySelectorAll('.service-item');
                 serviceItems.forEach(function(item) {
                     item.addEventListener('click', function() {
-                        this.classList.toggle('expanded');
-                    });
-                });
-                
-                var successCards = document.querySelectorAll('.success-card');
-                successCards.forEach(function(card) {
-                    card.addEventListener('click', function() {
                         this.classList.toggle('expanded');
                     });
                 });
