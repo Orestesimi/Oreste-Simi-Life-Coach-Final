@@ -220,10 +220,13 @@
             .process-step h3 { font-size: 16px; margin-bottom: 6px; text-align: left; }
             .process-step p { font-size: 13px; line-height: 1.6; text-align: left; }
             
-            .faq-container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .faq-item { padding: 15px 12px; border: 1px solid #dee2e6; }
-            .faq-item h4 { font-size: 13px; margin-bottom: 6px; }
-            .faq-item p { font-size: 11px; line-height: 1.6; }
+            .faq-container { grid-template-columns: 1fr; gap: 10px; }
+            .faq-item { padding: 15px 12px; border: 1px solid #dee2e6; cursor: pointer; }
+            .faq-item h4 { font-size: 13px; margin-bottom: 0; position: relative; padding-right: 25px; }
+            .faq-item h4::after { content: '▼'; position: absolute; right: 0; font-size: 12px; color: #2F5496; transition: transform 0.3s ease; }
+            .faq-item.expanded h4::after { transform: rotate(180deg); }
+            .faq-item p { font-size: 11px; line-height: 1.6; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; margin-top: 0; }
+            .faq-item.expanded p { max-height: 500px; margin-top: 10px; }
             
             .guarantee { padding: 28px 20px; margin-top: 25px; }
             .guarantee-badge { top: -12px; padding: 7px 20px; font-size: 12px; }
@@ -752,6 +755,13 @@
             if (window.innerWidth <= 768) {
                 var serviceItems = document.querySelectorAll('.service-item');
                 serviceItems.forEach(function(item) {
+                    item.addEventListener('click', function() {
+                        this.classList.toggle('expanded');
+                    });
+                });
+                
+                var faqItems = document.querySelectorAll('.faq-item');
+                faqItems.forEach(function(item) {
                     item.addEventListener('click', function() {
                         this.classList.toggle('expanded');
                     });
